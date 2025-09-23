@@ -1,7 +1,7 @@
 # Documentación de mi aplicación
 ## Objetivo:
-
-
+Informar sobre nutrición y buenos hábitos alimenticios para tener una vida saludable.
+ 
 ## Integrantes:
 Nombre: Daniel Ivan leyva Holguin
 
