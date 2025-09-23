@@ -1,5 +1,5 @@
 # Documentación de mi aplicación
-## Objetivo
+## Objetivo:
 
 
 ## Integrantes:
