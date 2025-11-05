@@ -142,7 +142,7 @@ Revisamos un total de cuatro aplicaciones: MyFitnessPal, Cronometer, FatSecret y
 
 <img width="714" height="1599" alt="image" src="https://github.com/user-attachments/assets/2cd9ac76-f88a-4447-b48b-733cf29a5385" />
 <img width="714" height="1599" alt="image" src="https://github.com/user-attachments/assets/72adc340-a780-4a74-a88e-e972975e3589" />
-<img width="373" height="832" alt="image" src="https://github.com/user-attachments/assets/d8d9ac30-b307-48a0-b349-2bca6ea9b6f0" />
+<img width="714" height="1599" alt="image" src="https://github.com/user-attachments/assets/d8d9ac30-b307-48a0-b349-2bca6ea9b6f0" />
 
 
 ---
