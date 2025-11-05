@@ -40,7 +40,11 @@ Revisamos un total de cuatro aplicaciones: MyFitnessPal, Cronometer, FatSecret y
 *   La **integración con otras plataformas** (Apple Health, Google Fit, Garmin, etc.) es de las mejores.
 
 **Capturas de pantalla**
-*(Espacio para insertar capturas de pantalla)*
+<img width="714" height="1599" alt="image" src="https://github.com/user-attachments/assets/2dfaa614-776b-4be2-8d4f-d6e029b1f8a7" />
+<img width="714" height="1599" alt="image" src="https://github.com/user-attachments/assets/8958b76a-1db4-4d9f-a0c3-a5a88f814e5e" />
+<img width="714" height="1599" alt="image" src="https://github.com/user-attachments/assets/911ec126-c9d4-4a09-8ca2-27a1101a7831" />
+
+
 
 ---
 
@@ -69,7 +73,9 @@ Revisamos un total de cuatro aplicaciones: MyFitnessPal, Cronometer, FatSecret y
 *   El **calendario mensual** para ver el resumen de la evolución es muy visual y útil.
 
 **Capturas de pantalla**
-*(Espacio para insertar capturas de pantalla)*
+<img width="714" height="1599" alt="image" src="https://github.com/user-attachments/assets/8f57e404-b695-40bb-a897-a184f19355b1" />
+<img width="714" height="1599" alt="image" src="https://github.com/user-attachments/assets/a8d9e041-04eb-4ef3-914e-2bff168ca51c" />
+
 
 ---
 
@@ -98,7 +104,10 @@ Revisamos un total de cuatro aplicaciones: MyFitnessPal, Cronometer, FatSecret y
 *   Ofrece **gráficos de tendencias de nutrientes** a lo largo del tiempo, mostrando deficiencias y excesos.
 
 **Capturas de pantalla**
-*(Espacio para insertar capturas de pantalla)*
+<img width="714" height="1599" alt="image" src="https://github.com/user-attachments/assets/1a490d1e-cd16-4bf2-b0ae-326efd30e2f3" />
+<img width="714" height="1599" alt="image" src="https://github.com/user-attachments/assets/7fb753d2-1542-4af4-abad-0cf46127d47d" />
+<img width="714" height="1599" alt="image" src="https://github.com/user-attachments/assets/0ef77622-3852-4cdc-bc50-9ecd2d875d89" />
+
 
 ---
 
@@ -127,7 +136,10 @@ Revisamos un total de cuatro aplicaciones: MyFitnessPal, Cronometer, FatSecret y
 *   La función **"Snap It"** (en pruebas) permite estimar las calorías de una comida mediante una foto (tecnología IA).
 
 **Captura de pantalla**
-*(Espacio para insertar capturas de pantalla)*
+<img width="714" height="1599" alt="image" src="https://github.com/user-attachments/assets/2cd9ac76-f88a-4447-b48b-733cf29a5385" />
+<img width="714" height="1599" alt="image" src="https://github.com/user-attachments/assets/72adc340-a780-4a74-a88e-e972975e3589" />
+<img width="373" height="832" alt="image" src="https://github.com/user-attachments/assets/d8d9ac30-b307-48a0-b349-2bca6ea9b6f0" />
+
 
 ---
 
@@ -171,6 +183,20 @@ Las preguntas fueron diseñadas con una metodología mixta, con el objetivo de r
 ### Gráficos y Análisis de Datos
 
 No nos pareció necesario poner todos los datos dados por la encuesta debido a que las respuestas eran solo texto y no eran posible representarse en una gráfica.
+<img width="1349" height="642" alt="image" src="https://github.com/user-attachments/assets/1a4e5cc6-31c9-4c7c-afa1-0da1271bd866" />
+<img width="1349" height="642" alt="image" src="https://github.com/user-attachments/assets/e84cbc88-b23d-4eb4-98ab-a980bcc1fc76" />
+<img width="1349" height="568" alt="image" src="https://github.com/user-attachments/assets/09dbe3e8-c17d-467f-90a8-c4ca836c1832" />
+<img width="1349" height="568" alt="image" src="https://github.com/user-attachments/assets/91914c35-e498-4198-ad28-2fff874b166e" />
+<img width="1349" height="642" alt="image" src="https://github.com/user-attachments/assets/39f6e388-c850-47e0-9bb6-cbeb8f34555b" />
+<img width="1349" height="678" alt="image" src="https://github.com/user-attachments/assets/fc01db95-a6c9-4f11-8a85-2cba80bb2e6c" />
+<img width="1349" height="568" alt="image" src="https://github.com/user-attachments/assets/397b57ab-b2d7-4726-831a-3de193256b3b" />
+<img width="1349" height="568" alt="image" src="https://github.com/user-attachments/assets/fbb3ac24-2ea9-437d-a824-eee45d450ca1" />
+<img width="1349" height="568" alt="image" src="https://github.com/user-attachments/assets/4550cda5-e4d8-4f97-a2ab-ec89e58d5654" />
+<img width="1349" height="568" alt="image" src="https://github.com/user-attachments/assets/c1963a1d-ef02-4281-955d-ba91a4825667" />
+<img width="1349" height="568" alt="image" src="https://github.com/user-attachments/assets/94a0ffe0-5d33-436f-bdad-1e4986d24028" />
+<img width="1349" height="568" alt="image" src="https://github.com/user-attachments/assets/2c54ce41-4cbb-4ad0-b592-269cc279c4a6" />
+<img width="1349" height="568" alt="image" src="https://github.com/user-attachments/assets/d882127d-7517-42a3-bc83-6d3b69550526" />
+<img width="1349" height="568" alt="image" src="https://github.com/user-attachments/assets/4bd3a9dc-f518-4ba1-8ea0-4b343775747d" />
 
 ---
 
