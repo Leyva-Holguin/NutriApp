@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash, session
 
 app = Flask(__name__) 
 
@@ -11,6 +11,10 @@ def index():
 @app.route('/registro')
 def registro():
     return render_template('registro.html')
+
+@app.route('/educacion')
+def educacion():
+    return render_template('educacion.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
