@@ -7,6 +7,18 @@
             <div class="card p-3 p-md-4 shadow-sm">
                 <h2 class="text-center">Crea tu perfil</h2>
                 <p class="text-center text-muted">Es rápido y fácil.</p>
+
+                {% with messages = get_flashed_messages(with_categories=True) %}
+                {% if messages %}
+                {% for category, message in messages %}
+                <div class="alert alert-{{ 'danger' if category == 'error' else 'danger' }} alert-dismissible fade show"
+                    role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endfor %}
+                {% endif %}
+                {% endwith %}
                 <section>
                     <form method="post" id="registro" action="/registrar">
                         <div class="row mb-3">
@@ -80,13 +92,9 @@
                                 </select>
                             </div>
                         </div>
-
-                        <!-- PREFERENCIAS Y RESTRICCIONES -->
                         <div class="row mb-3">
                             <div class="col-12 text-start">
                                 <label class="form-label fw-medium">Preferencias y Restricciones Alimentarias</label>
-
-                                <!-- Alergias -->
                                 <div class="mb-3">
                                     <label class="form-label small">Alergias alimentarias</label>
                                     <div class="form-check">
@@ -115,8 +123,6 @@
                                         <label class="form-check-label" for="alergia_huevo">Huevo</label>
                                     </div>
                                 </div>
-
-                                <!-- Intolerancias -->
                                 <div class="mb-3">
                                     <label class="form-label small">Intolerancias alimentarias</label>
                                     <div class="form-check">
@@ -135,8 +141,6 @@
                                         <label class="form-check-label" for="intol_fructosa">Fructosa</label>
                                     </div>
                                 </div>
-
-                                <!-- Dietas específicas -->
                                 <div class="mb-3">
                                     <label class="form-label small">Dietas específicas</label>
                                     <div class="form-check">
@@ -165,8 +169,6 @@
                                         <label class="form-check-label" for="dieta_sin_azucar">Baja en azúcar</label>
                                     </div>
                                 </div>
-
-                                <!-- Alimentos que no le gustan -->
                                 <div class="mb-2">
                                     <label for="alimentos_no_gusta" class="form-label small">Alimentos que no te gustan
                                         (opcional)</label>
@@ -176,8 +178,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!-- NIVEL DE EXPERIENCIA EN COCINA -->
                         <div class="row mb-3">
                             <div class="col-12 text-start">
                                 <label for="nivel_experiencia" class="form-label fw-medium">Nivel de Experiencia en
