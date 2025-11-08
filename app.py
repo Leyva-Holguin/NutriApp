@@ -16,6 +16,24 @@ def registro():
 def educacion():
     return render_template('educacion.html')
 
+@app.route('/registrar', methods=['GET', 'POST'])
+def registrar():
+    if request.method == 'POST':
+        nombre = request.form['nombre']
+        apellido = request.form['apellido']
+        dia = request.form['dia']
+        mes = request.form['mes']
+        year = request.form['year']
+        genero = request.form['genero']
+        peso = request.form['peso']
+        altura = request.form['altura']
+        objetivo = request.form['objetivo']
+        nivel_actividad = request.form['nivel_actividad']
+        nivel_experiencia = request.form['nivel_experiencia']
+        correo = request.form['correo']
+        password = request.form['password']
+        return render_template('index.html')
+        
 if __name__ == '__main__':
     app.run(debug=True)
 
