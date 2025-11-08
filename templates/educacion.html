@@ -305,7 +305,95 @@
         </div>
     </div>
 </section>
+<section class="container mt-5">
+    <div class="row">
+        <div class="col-12">
+            <div class="card text-bg-light mb-3">
+                <div class="card-header">
+                    <h2 class="mb-0">Recursos Descargables</h2>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">Complementa tu nutrición con estos recursos prácticos que puedes descargar y usar cuando los necesites.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Planilla de Ejercicios Básicos</h5>
+                    <p class="card-text">Rutina completa para principiantes que puedes hacer en casa sin equipo especial.</p>
+                </div>
+                <div class="card-footer">
+                    <a href="{{ url_for('static', filename='descargas/ejercicios.pdf') }}"  
+                       class="btn btn-primary w-100" download>
+                       Descargar PDF
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Guía de Porciones Saludables</h5>
+                    <p class="card-text">Aprende a medir tus porciones usando referencias prácticas de tu mano.</p>
+                </div>
+                <div class="card-footer">
+                    <a href="{{ url_for('static', filename='descargas/guia-alimentos.pdf') }}" 
+                       class="btn btn-success w-100" download>
+                       Descargar PDF
+                    </a>
+                </div>
+            </div>
+        </div>
 
 
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Lista de Compras Saludables</h5>
+                    <p class="card-text">Lista organizada por secciones del supermercado para compras nutritivas.</p>
+
+                </div>
+                <div class="card-footer">
+                    <a href="{{ url_for('static', filename='descargas/cartera-alimentacion.pdf') }}" 
+                       class="btn btn-warning w-100" download>
+                       Descargar PDF
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Guía de Hidratación Diaria</h5>
+                    <p class="card-text">Consejos prácticos y registro para mantener una hidratación adecuada.</p>
+                </div>
+                <div class="card-footer">
+                    <a href="{{ url_for('static', filename='descargas/guia-hidra.pdf') }}" 
+                       class="btn btn-primary w-100" download>
+                       Descargar PDF
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Recetario Básico Saludable</h5>
+                    <p class="card-text">Recetas fáciles y rápidas para comidas nutritivas.</p>
+                </div>
+                <div class="card-footer">
+                    <a href="{{ url_for('static', filename='descargas/recetario.pdf') }}" 
+                       class="btn btn-danger w-100" download>
+                       Descargar PDF
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 {% endblock %}
