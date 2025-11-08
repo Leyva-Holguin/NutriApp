@@ -4,7 +4,7 @@
 
 {% block contenido %}
 
-<section class="pt-4">
+<section class="container pt-4">
     <div class="row align-items-center">
         <div class="col-12 col-md-7">
             <div class="card text-bg-light mb-3">
@@ -97,7 +97,7 @@
     </div>
 </section>
 
-<section>
+<section class="container">
     <div class="row">
         <div class="col-12">
             <div class="card text-bg-light mb-3">
@@ -167,50 +167,142 @@
     <div class="row">
         <div class="col-12 col-md-3">
             <div class="card">
-                <img src="{{ url_for('static', filename='img/carbon.avif') }}" class="img-fluid"
-                    alt="carbohidratos.">
+                <img src="{{ url_for('static', filename='img/carbon.avif') }}" class="img-fluid" alt="carbohidratos.">
                 <div class="card-body">
-                    <h3>Hábitos</h3>
-                    <p class="card-text">Adopta cambios sencillos y sostenibles que te ayuden a cuidar tu bienestar a
-                        largo plazo.</p>
+                    <h3>Carbohidratos</h3>
+                    <p class="card-text">Función: Son la principal fuente de energía del cuerpo. El cerebro, los
+                        músculos y otros órganos dependen de ellos para funcionar correctamente.</p>
+                    <p>Fuentes saludables: Frutas, verduras, legumbres, cereales integrales, avena, maíz y arroz
+                        integral.</p>
+                    <p>Recomendación: Evitar el exceso de azúcares añadidos y productos ultraprocesados. Preferir
+                        carbohidratos complejos con fibra, que aportan energía de forma sostenida.</p>
                 </div>
             </div>
         </div>
 
-                <div class="col-12 col-md-3">
+        <div class="col-12 col-md-3">
             <div class="card">
-                <img src="{{ url_for('static', filename='img/pro.webp') }}" class="img-fluid"
-                    alt="proteínas.">
+                <img src="{{ url_for('static', filename='img/pro.webp') }}" class="img-fluid" alt="proteínas.">
                 <div class="card-body">
-                    <h3>Hábitos</h3>
-                    <p class="card-text">Adopta cambios sencillos y sostenibles que te ayuden a cuidar tu bienestar a
-                        largo plazo.</p>
+                    <h3>Proteínas</h3>
+                    <p class="card-text">Función: Son esenciales para formar y reparar tejidos, músculos, piel, uñas y
+                        hormonas. También ayudan al sistema inmunológico.</p>
+                    <p>Fuentes saludables: Carnes magras, pescado, huevo, legumbres (frijoles, lentejas), tofu, nueces
+                        y semillas.</p>
+                    <p>Recomendación: Combinar fuentes animales y vegetales para obtener todos los aminoácidos
+                        esenciales.</p>
                 </div>
             </div>
         </div>
 
-                <div class="col-12 col-md-3">
+        <div class="col-12 col-md-3">
             <div class="card">
-                <img src="{{ url_for('static', filename='img/gras.jpeg') }}" class="img-fluid"
-                    alt="Grasas.">
+                <img src="{{ url_for('static', filename='img/gras.jpeg') }}" class="img-fluid" alt="Grasas.">
                 <div class="card-body">
-                    <h3>Hábitos</h3>
-                    <p class="card-text">Adopta cambios sencillos y sostenibles que te ayuden a cuidar tu bienestar a
-                        largo plazo.</p>
+                    <h3>Grasas saludables</h3>
+                    <p class="card-text">Función: Aportan energía, ayudan a absorber vitaminas (A, D, E y K) y
+                        participan en la producción de hormonas.</p>
+                    <p>Fuentes saludables: Aguacate, aceite de oliva, semillas, nueces, pescado azul (como el salmón o
+                        la sardina).</p>
+                    <p>Recomendación: Limitar las grasas saturadas y eliminar las grasas trans (presentes en frituras y
+                        productos industrializados).</p>
                 </div>
             </div>
         </div>
 
-                <div class="col-12 col-md-3">
+        <div class="col-12 col-md-3">
             <div class="card">
                 <div class="card-body">
-                    <h3>Hábitos</h3>
-                    <p class="card-text">Adopta cambios sencillos y sostenibles que te ayuden a cuidar tu bienestar a
-                        largo plazo.</p>
+                    <h3>Balance energético</h3>
+                    <p class="card-text">El equilibrio entre los macronutrientes es fundamental.
+                        Una alimentación balanceada, según la Guía Alimentaria Mexicana y la NOM-043-SSA2-2012, debe
+                        incluir:</p>
+                    <ul>
+                        <li>50–60% de calorías provenientes de carbohidratos.</li>
+                        <li>15–20% de proteínas.</li>
+                        <li>25–35% de grasas saludables.</li>
+                    </ul>
+                    <p>Estos valores pueden variar según la edad, actividad física y estado de salud de cada persona.
+                    </p>
                 </div>
             </div>
         </div>
-        
+    </div>
+</section>
+
+<section class="container mt-3">
+    <div class="row">
+        <div class="col-12">
+            <div class="card text-bg-light mb-3">
+                <div class="card-header">La importancia de la hidratación, la fibra y otros componentes esenciales</div>
+                <div class="card-body">
+                    <p class="card-text">Existen otros factores clave que contribuyen al bienestar: la
+                        hidratación, el consumo suficiente de fibra y los micronutrientes
+                        (vitaminas y minerales).</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h3>Hidratación</h3>
+                        <p class="card-text">Función: El agua regula la temperatura, transporta nutrientes, elimina
+                            desechos y
+                            mantiene las articulaciones lubricadas.</p>
+                        <p>Recomendación: Se aconseja consumir entre 6 y 8 vasos de agua al día (1.5 a 2 litros),
+                            dependiendo de la edad, clima y nivel de actividad física.</p>
+                        <p>Evitar: Refrescos, bebidas energéticas y jugos industrializados con alto contenido de azúcar,
+                            ya que pueden provocar deshidratación o exceso calórico.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h3>Fibra dietética</h3>
+                        <p class="card-text">Función: Mejora la digestión, previene el estreñimiento y ayuda a controlar
+                            los niveles de glucosa y colesterol en sangre.</p>
+                        <p>Fuentes: Frutas con cáscara, verduras, legumbres, avena, pan integral, semillas y frutos
+                            secos.</p>
+                        <p>Recomendación: Consumir al menos 25 a 30 gramos de fibra diarios.</p>
+                        <p>Dato: La fibra debe de ir acompañada de suficiente agua para evitar malestar intestinal.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h3>Vitaminas y minerales</h3>
+                        <p class="card-text">Función: Son esenciales para el funcionamiento del sistema inmunológico, la
+                            formación de huesos, la producción de energía y la prevención de enfermedades.</p>
+                        <p>Fuentes:</p>
+                        <ul>
+                            <li>Vitamina A: zanahoria, calabaza, mango.</li>
+                            <li>Vitamina C: cítricos, guayaba, pimientos.</li>
+                            <li>Hierro: carnes magras, espinaca, lentejas.</li>
+                            <li>Calcio: leche, yogur, tofu, almendras.</li>
+                            <li>Zinc: legumbres, nueces, semillas..</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="card text-bg-light mb-3">
+                    <div class="card-header">Otros elementos</div>
+                    <div class="card-body">
+                        <p class="card-text"><strong>Sueño adecuado:</strong>favorece la regulación hormonal y el metabolismo.</p>
+                        <p><strong>Actividad física:</strong>mejora la absorción de nutrientes y la salud cardiovascular.</p>
+                        <p><strong>Moderación:</strong>los alimentos saludables también deben de consumirse en cantidades adecuadas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
