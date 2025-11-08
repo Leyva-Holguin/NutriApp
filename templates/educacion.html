@@ -1,21 +1,212 @@
 {% extends "base.html" %}
 
-{% block titulo %}Educacion e información{% endblock %}
+{% block titulo %}Educación e información{% endblock %}
 
 {% block contenido %}
 
 <section class="pt-4">
+    <div class="row align-items-center">
+        <div class="col-12 col-md-7">
+            <div class="card text-bg-light mb-3">
+                <div class="card-header">¿Cómo leer las etiquetas nutricionales?</div>
+                <div class="card-body">
+                    <h5 class="card-title">Importancia</h5>
+                    <p class="card-text">Las etiquetas nutricionales son una guía que te ayuda a saber qué estás
+                        comiendo.</p>
+                    <p>En México, los alimentos y bebidas preenvasados deben mostrar información sobre su contenido.</p>
+                    <p>Aprender a leerlas te permitirá comparar productos, cuidar tu salud y elegir mejor lo que
+                        compras.</p>
+                    <p>Desde 2020, México aplica la NOM-051-SCFI/SSA1-2010, una norma que exige que los envases tengan
+                        <strong>sellos de
+                            advertencia</strong> en forma de octágonos negros si el producto excede ciertos limites de:
+                    </p>
+                    <ul>
+                        <li>Azúcares añadidos</li>
+                        <li>Grasas saturadas</li>
+                        <li>Grasa trans</li>
+                        <li>Sodio</li>
+                        <li>Calorías</li>
+                    </ul>
+                    <p>También pueden contener leyendas como "Contiene educolorantes, no recomendable en niños" o
+                        "Contiene cafeína evitar en niños".</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-5">
+            <img src="{{ url_for('static', filename='img/sellos33.jpeg') }}" class="img-fluid rounded-4"
+                alt="Sellos de advertencia.">
+        </div>
+    </div>
+    <div class="row align-items-center">
+        <div class="col-12 col-md-7">
+            <div class="card text-bg-light mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Cómo leer una etiqueta paso a paso</h5>
+                    <p class="card-text"><strong>1. Tamaño de la porción</strong></p>
+                    <p>Observa primero <strong>el tamaño de la porción</strong>. Toda la información (calorías, grasas,
+                        azúcares, etc) se calcula por porción, no por envase.
+                        Si el producto dice "2 porciones por envase" debes multiplicar los valores por 2.</p>
+                    <p><strong>2. Calorias o valor energético</strong></p>
+                    <p>Indican cuánta energía aporta una porción.
+                        Esto te ayuda a saber si ese alimento encaja con tus necesidades diarias.
+                        Las necesidades calóricas dependen del sexo, edad, altura, peso y actividad fisica pero se
+                        estiman las siguientes cifras:</p>
+                    <p>Mujeres: Entre 1, 600 y 2, 000 calorias al día.</p>
+                    <p>Hombres: Entre 2, 000 y 2, 400 calorias al día.</p>
+                    <p><strong>3. Nutrimentos que debes limitar</strong></p>
+                    <p>Son los que pueden afectar tu salud si se consumen en exceso:</p>
+                    <ul>
+                        <li>Azúcares añadidos: favorecen el aumento de peso y caries.</li>
+                        <li>Grasas saturadas y trans: aumentan el riesgo cardiovascular.</li>
+                        <li>Sodio: puede elevar la presión arterial.</li>
+                    </ul>
+                    <p>Si el producto tiene sellos de “EXCESO EN…”, significa que <strong>supera los límites
+                            recomendados</strong>.
+                        Cuantos más sellos tenga, menos saludable es para el consumo frecuente.</p>
+                    <p><strong>4. Nutrimentos que conviene promover</strong></p>
+                    <p>Busca alimentos que aporten:</p>
+                    <ul>
+                        <li>Fibra dietética: mejora la digestión.</li>
+                        <li>Proteína: esencial para músculos y tejidos.</li>
+                        <li>Vitaminas y minerales: Fortalecen tu organismo.</li>
+                    </ul>
+                    <p><strong>5. Lista de ingredientes</strong></p>
+                    <p>Se ordenan de mayor a menor cantidad.
+                        Si los primeros son azúcar, jarabes, harinas refinadas o grasas, el producto es altamente
+                        procesado.
+                        Mientras menos ingredientes raros o químicos tenga, mejor opción es.</p>
+                    <p>Consejos:</p>
+                    <ol>
+                        <li>Compara productos similares y elige el que tenga menos sellos y menos ingredientes
+                            procesados.</li>
+                        <li> No te dejes engañar por frases como “natural” o “light”; lo importante está en la tabla y
+                            los sellos.</li>
+                        <li> Considera tu porción real, no la del envase.</li>
+                        <li>Prefiere consumir alimentos frescos o mínimamente procesados: frutas, verduras, legumbres,
+                            etc.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-5">
+            <img src="{{ url_for('static', filename='img/etq nutriconal.jpg') }}" class="img-fluid rounded-4"
+                alt="Etiqueta nutricional.">
+        </div>
+
+    </div>
+</section>
+
+<section>
     <div class="row">
-        <div class="card text-bg-light mb-3" style="max-width: 18rem;">
-            <div class="card-header">Header</div>
-            <div class="card-body">
-                <h5 class="card-title">Light card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card’s content.
-                </p>
+        <div class="col-12">
+            <div class="card text-bg-light mb-3">
+                <div class="card-header">Mitos y verdades sobre las dietas de moda</div>
+                <div class="card-body">
+                    <h5 class="card-title">¿Por qué hay tantas dietas de moda?</h5>
+                    <p class="card-text">Todos los años aparecen nuevas dietas que prometen resultados rápidos como
+                        "perder peso" o "desintoxicar el cuerpo". Sin embargo muchas de ellas carecen de respaldo
+                        cientifico y pueden poner en riesgo la salud.</p>
+                    <h5>Mitos más comunes</h5>
+                    <p><strong>“Entre menos comas, más rápido bajarás de peso.”</strong></p>
+                    <p>Reducir tanto las calorías puede provocar
+                        fatiga, pérdida de masa muscular y un efecto rebote.
+                        El cuerpo necesita energía suficiente para funcionar, lo ideal es un déficit moderado y
+                        controlado con apoyo profesional.</p>
+                    <p><strong>“Las dietas detox eliminan toxinas del cuerpo.”</strong></p>
+                    <p>El cuerpo ya tiene órganos que lo desintoxican naturalmente (el hígado, los riñones y los
+                        pulmones).
+                        No existen jugos ni tés que limpien el organismo.
+                        Lo mejor es mantener una alimentación balanceada y beber suficiente agua</p>
+                    <p><strong>“Los carbohidratos engordan.”</strong></p>
+                    <p>Los carbohidratos son una fuente <strong>principal de energía</strong>.
+                        El problema en realidad está en el exceso y en los tipos: los <strong>refinados y
+                            azucarados</strong> sí deben limitarse,
+                        pero los <strong>integrales, frutas y legumbres</strong> son fundamentales para el cuerpo.</p>
+                    <p><strong>“Comer de noche siempre engorda.”</strong></p>
+                    <p>Lo que importa no es la hora, sino la cantidad total y la calidad de lo que comes durante el día.
+                        si lo ultimo que comiste fue algo equilibrado y ligero, no pasa nada por cenar tarde.</p>
+                    <p><strong>“Las dietas sin gluten o sin lactosa son más saludables.”</strong></p>
+                    <p>Solo si tienes una condición médica diagnosticada (como enfermedad celíaca o intolerancia a la
+                        lactosa).
+                        De lo contrario, eliminar estos grupos sin razón podria causar <strong>deficiencias
+                            nutricionales</strong> o
+                        limitar innecesariamente tu alimentación.</p>
+                    <h5>Verdades importantes</h5>
+                    <p><strong>"La mejor dieta es la que puedes mantener."</strong></p>
+                    <p>No sirve una dieta que solo funcione dos semanas.
+                        Un buen plan se adapta a tu ritmo, gustos y necesidades a largo plazo.</p>
+                    <p><strong>"Comer variado es más importante que comer poco."</strong></p>
+                    <p>Incluir todos los grupos de alimentos (carbohidratos, proteínas y grasas saludables) garantiza
+                        equilibrio y energía.</p>
+                    <p><strong>"No hay alimentos buenos ni malos."</strong></p>
+                    <p>Todo depende de la frecuencia, cantidad y contexto.
+                        comer un dulce de vez en cuando no te hará daño, pero el exceso sí puede hacerlo.</p>
+                    <p><strong>"La hidratación y la actividad física cuentan."</strong></p>
+                    <p>Ninguna dieta funciona si no se acompaña de agua suficiente, sueño adecuado y movimiento diario.
+                    </p>
+                </div>
             </div>
         </div>
     </div>
 </section>
+
+<section>
+    <div class="row">
+        <div class="col-12">
+            <div class="card text-bg-light mb-3">
+                <div class="card-header">Macronutrientes y su función</div>
+                <div class="card-body">
+                    <p class="card-text">Los macronutrientes son los componentes principales de los alimentos que el
+                        cuerpo necesita en grandes cantidades para obtener energía y mantener sus funciones vitales.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 col-md-3">
+            <div class="card" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card’s content.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-3">
+            <div class="card" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card’s content.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-3">
+            <div class="card" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card’s content.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-3">
+            <div class="card" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card’s content.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
 
 {% endblock %}
