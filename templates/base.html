@@ -30,21 +30,24 @@
                                 <a class="nav-link active text-light" aria-current="page"
                                     href="http://127.0.0.1:5000">Inicio</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" href="http://127.0.0.1:5000/educacion">Educación e información</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" href="http://127.0.0.1:5000/herramientas">Herramientas</a>
+                            </li>
                             {% if session.get('logueado') %}
                                 <li class="nav-item">
                                     <a class="nav-link text-light" href="{{ url_for('logout') }}">Cerrar Sesión</a>
                                 </li>
                             {% else %}
                             <li class="nav-item">
-                                <a class="nav-link text-light" href="http://127.0.0.1:5000/registro">Registro</a>
+                                <a class="nav-link text-light" href="http://127.0.0.1:5000/registro">Registrarse</a>
                             </li>
                                 <li class="nav-item">
-                                    <a class="nav-link text-light" href="http://127.0.0.1:5000/iniciar">iniciar sesion</a>
+                                    <a class="nav-link text-light" href="http://127.0.0.1:5000/iniciar">Iniciar sesion</a>
                                 </li>
                             {% endif %}  
-                            <li class="nav-item">
-                                <a class="nav-link text-light" href="http://127.0.0.1:5000/educacion">Educación e información</a>
-                            </li>
                         </ul>
                     </div>
                 </div>
