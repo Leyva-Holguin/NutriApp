@@ -9,6 +9,9 @@ USUARIOS_REGISTRADOS = {
 }
 app.config['SECRET_KEY'] = 'la_primera_es_la_primera'
 
+API_KEY = "1320e414b5414686ac59e14362f5a2d3"
+API_BASE = "https://api.spoonacular.com"
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -113,7 +116,129 @@ def herramientas():
             datos_usuario = USUARIOS_REGISTRADOS[usuario_correo]
     return render_template('herramientas.html', datos_usuario=datos_usuario)
 
+@app.route('/cal_imc', methods=['POST'])
+def cal_imc():
+    datos_usuario = None
+    if session.get('logueado'):
+        usuario_correo = session.get('usuario_correo')
+        if usuario_correo in USUARIOS_REGISTRADOS:
+            datos_usuario = USUARIOS_REGISTRADOS[usuario_correo]
+    resultado = None
+    try:
+        peso = float(request.form.get('peso_imc'))
+        altura = float(request.form.get('altura_imc')) / 100
+        imc = peso / (altura ** 2)
+        if imc < 18.5:
+            clasificacion = "Bajo peso"
+        elif imc < 25:
+            clasificacion = "Peso normal"
+        elif imc < 30:
+            clasificacion = "Sobrepeso"
+        else:
+            clasificacion = "Obesidad"
+        resultado = f'Tu IMC es: {imc:.1f} - {clasificacion}'
+    except (ValueError, ZeroDivisionError):
+        resultado = 'Por favor ingresa valores numéricos válidos'
+    return render_template('herramientas.html', datos_usuario=datos_usuario, resultado_imc=resultado)
+
+@app.route('/cal_tmb', methods=['POST'])
+def cal_tmb():
+    datos_usuario = None
+    if session.get('logueado'):
+        usuario_correo = session.get('usuario_correo')
+        if usuario_correo in USUARIOS_REGISTRADOS:
+            datos_usuario = USUARIOS_REGISTRADOS[usuario_correo]
+    resultado = None
+    try:
+        edad = int(request.form.get('edad_tmb'))
+        peso = float(request.form.get('peso_tmb'))
+        altura = float(request.form.get('altura_tmb'))
+        genero = request.form.get('genero_tmb')
+        if genero == 'hombre':
+            tmb = (10 * peso) + (6.25 * altura) - (5 * edad) + 5
+        else:
+            tmb = (10 * peso) + (6.25 * altura) - (5 * edad) - 161
+        resultado = f'Tu Tasa Metabólica Basal es: {tmb:.0f} calorías/día'
+    except ValueError:
+        resultado = 'Por favor ingresa valores numéricos válidos'
+    return render_template('herramientas.html', datos_usuario=datos_usuario, resultado_tmb=resultado)
+
+@app.route('/cal_gct', methods=['POST'])
+def cal_gct():
+    datos_usuario = None
+    if session.get('logueado'):
+        usuario_correo = session.get('usuario_correo')
+        if usuario_correo in USUARIOS_REGISTRADOS:
+            datos_usuario = USUARIOS_REGISTRADOS[usuario_correo]
+    resultado = None
+    try:
+        tmb = float(request.form.get('tmb_gct'))
+        actividad = request.form.get('actividad_gct')
+        factores = {
+            'sedentario': 1.2,
+            'ligero': 1.375,
+            'moderado': 1.55,
+            'activo': 1.725,
+            'atleta': 1.9
+        }
+        gct = tmb * factores.get(actividad, 1.2)
+        resultado = f'Tu Gasto Calórico Total es: {gct:.0f} calorías/día'
+    except ValueError:
+        resultado = 'Por favor ingresa valores numéricos válidos'
+    return render_template('herramientas.html', datos_usuario=datos_usuario, resultado_gct=resultado)
+
+@app.route('/cal_peso_ideal', methods=['POST'])
+def cal_peso_ideal():
+    datos_usuario = None
+    if session.get('logueado'):
+        usuario_correo = session.get('usuario_correo')
+        if usuario_correo in USUARIOS_REGISTRADOS:
+            datos_usuario = USUARIOS_REGISTRADOS[usuario_correo]
+    resultado = None
+    try:
+        altura = float(request.form.get('altura_pci'))
+        genero = request.form.get('genero_pci')
+        complexion = request.form.get('complexion_pci')
+        if genero == 'hombre':
+            peso_base = 50 + 0.91 * (altura - 152.4)
+        else:
+            peso_base = 45.5 + 0.91 * (altura - 152.4)
+        peso_min = peso_base * 0.9
+        peso_max = peso_base * 1.1
+        resultado = f'Tu peso ideal aproximado: {peso_base:.1f} kg<br> Rango saludable: {peso_min:.1f} - {peso_max:.1f} kg'
+    except ValueError:
+        resultado = 'Por favor ingresa valores numéricos válidos'
+    return render_template('herramientas.html', datos_usuario=datos_usuario, resultado_peso_ideal=resultado)
+
+@app.route('/cal_macronutrientes', methods=['POST'])
+def cal_macronutrientes():
+    datos_usuario = None
+    if session.get('logueado'):
+        usuario_correo = session.get('usuario_correo')
+        if usuario_correo in USUARIOS_REGISTRADOS:
+            datos_usuario = USUARIOS_REGISTRADOS[usuario_correo]
+    resultado = None
+    try:
+        calorias = float(request.form.get('calorias_macro'))
+        objetivo = request.form.get('objetivo_macro')
+        actividad = request.form.get('actividad_macro')
+        if objetivo == 'perder':
+            proteina = (calorias * 0.4) / 4
+            carbohidratos = (calorias * 0.3) / 4
+            grasa = (calorias * 0.3) / 9
+        elif objetivo == 'mantener':
+            proteina = (calorias * 0.3) / 4
+            carbohidratos = (calorias * 0.4) / 4
+            grasa = (calorias * 0.3) / 9
+        else:
+            proteina = (calorias * 0.35) / 4
+            carbohidratos = (calorias * 0.45) / 4
+            grasa = (calorias * 0.2) / 9
+        resultado = f'Macronutrientes diarios:<br>• Proteína: {proteina:.0f}g<br>• Carbohidratos: {carbohidratos:.0f}g<br>• Grasas: {grasa:.0f}g'
+    except ValueError:
+        resultado = 'Por favor ingresa valores numéricos válidos'
+    
+    return render_template('herramientas.html', datos_usuario=datos_usuario, resultado_macronutrientes=resultado)
 
 if __name__ == '__main__':
     app.run(debug=True)
-
