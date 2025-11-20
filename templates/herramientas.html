@@ -221,5 +221,41 @@
             </div>
         </div>
     </div>
+    <div class="row mb-4">
+        <div class="col-6">
+            <div class="card text-bg-light mb-3">
+                <div class="card-header">Analizador de Recetas o Platos</div>
+                <div class="card-body">
+                    <h5 class="card-title">¿Qué puedes hacer aquí?</h5>
+                    <p>Analiza el valor nutricional de tus recetas o encuentra recetas por ingrediente (en ingles).</p>
+                    <form method="POST" action="{{ url_for('analizar_receta') }}" class="mb-4">
+                        <div class="row mb-3">
+                            <div class="col-12 text-start">
+                                <label for="texto_receta" class="form-label">Analizar Receta:</label>
+                                <textarea class="form-control" id="texto_receta" name="texto_receta" rows="3" placeholder="Ej: 2 huevos, 1 taza de arroz, 200g de pollo, 1 cebolla..." required></textarea>
+                                <div class="form-text">Ingresa los ingredientes de tu receta separados por comas.</div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Analizar Receta</button>
+                    </form>
+                    <form method="POST" action="{{ url_for('buscar_receta') }}">
+                        <div class="row mb-3">
+                            <div class="col-12 text-start">
+                                <label for="ingrediente_receta" class="form-label">Buscar Recetas:</label>
+                                <input type="text" class="form-control" id="ingrediente_receta" name="ingrediente_receta"placeholder="Ej: pollo, arroz, aguacate..." required>
+                                <div class="form-text">Busca recetas que contengan este ingrediente.</div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-success">Buscar Recetas</button>
+                    </form>  
+                    {% if resultado_receta %}
+                    <div class="alert alert-info mt-3">
+                        {{ resultado_receta|safe }}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 {% endblock %}
