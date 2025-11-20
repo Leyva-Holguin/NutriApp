@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session
-
+import requests
 app = Flask(__name__) 
 USUARIOS_REGISTRADOS = {
     'daniel@correo.com':{
@@ -52,7 +52,17 @@ def registrar():
             USUARIOS_REGISTRADOS[correo] = {
                 'password': password,
                 'nombre': f"{nombre} {apellido}",
-            }
+                'dia':  dia,
+                'mes': mes,
+                'year': year,
+                'genero': genero,
+                'peso': peso,
+                'altura' : altura,
+                'objetivo': objetivo,
+                'nivel_actividad': nivel_actividad,
+                'nivel_experiencia': nivel_experiencia,
+                'correo': correo,
+                }
             flash(f"Registro exitoso: {nombre}. Ahora puedes iniciar sesión.", 'success')
             return redirect(url_for('iniciar'))
         
@@ -96,7 +106,12 @@ def logout():
 
 @app.route('/herramientas')
 def herramientas():
-    return render_template('herramientas.html')
+    datos_usuario = None
+    if session.get('logueado'):
+        usuario_correo = session.get('usuario_correo')
+        if usuario_correo in USUARIOS_REGISTRADOS:
+            datos_usuario = USUARIOS_REGISTRADOS[usuario_correo]
+    return render_template('herramientas.html', datos_usuario=datos_usuario)
 
 
 if __name__ == '__main__':

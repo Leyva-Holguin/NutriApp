@@ -1,49 +1,161 @@
 {% extends "base.html" %}
-
 {% block titulo %}Herramientas{% endblock %}
-
 {% block contenido %}
-
 <section class="container pt-4">
-    <div class="row">
+    <div class="row mb-4">
         <div class="col-6">
             <div class="card text-bg-light mb-3">
-                <div class="card-header">Calculadora de Indice de Masa Corporal (IMC)</div>
+                <div class="card-header">Calculadora de Índice de Masa Corporal (IMC)</div>
                 <div class="card-body">
-                    <h5 class="card-title">¿Que es el Indice de Masa Corporal</h5>
-                    <p>El IMC sirve para identificar si una persona esta en su peso ideal, esta por debajo o por arriba de lo adecuado. </p>
-                    <div class="row mb-3">
-                        <div class="col-8 text-start">
-                            <label for="imc" class="form-label fw-medium">Calcula tu IMC</label>
-                            <input type="text" class="form-control" id="imc" name="imc" required
-                                placeholder="Ingresa tu edad" value="{{ request.form.get('peso', '')}}">
+                    <h5 class="card-title">¿Qué es el Índice de Masa Corporal?</h5>
+                    <p>El IMC sirve para identificar si una persona está en su peso ideal.</p>
+                    <form method="POST" action="#">
+                        <div class="row mb-3">
+                            <div class="col-8 text-start">
+                                <input type="text" class="form-control" name="edad_imc" required
+                                    placeholder="Ingresa tu edad" value="{{ datos_usuario.peso if datos_usuario else '' }}">
+                            </div>
                         </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-8 text-start">
-                                <select class="form-select" id="imc" name="imc" required>
+                        <div class="row mb-3">
+                            <div class="col-8 text-start">
+                                <select class="form-select" name="genero_imc" required>
                                     <option value="" selected disabled>Selecciona tu Género</option>
-                                    <option value="hombre">Hombre</option>
-                                    <option value="mujer">Mujer</option>
+                                    <option value="hombre" {{ 'selected' if datos_usuario.genero == 'hombre' else '' }}>Hombre</option>
+                                    <option value="mujer" {{ 'selected' if datos_usuario.genero == 'mujer' else '' }}>Mujer</option>
                                 </select>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-8 text-start">
-                            <input type="text" class="form-control" id="imc" name="imc" required
-                                placeholder="Ingresa tu peso" value="{{ request.form.get('peso', '')}}">
+                        <div class="row mb-3">
+                            <div class="col-8 text-start">
+                                <input type="text" class="form-control" name="peso_imc" required
+                                    placeholder="Ingresa tu peso (kg)" value="{{ datos_usuario.peso if datos_usuario else '' }}">
+                            </div>
                         </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-8 text-start">
-                            <input type="text" class="form-control" id="imc" name="imc" required
-                                placeholder="Ingresa tu altura" value="{{ request.form.get('peso', '')}}">
+                        <div class="row mb-3">
+                            <div class="col-8 text-start">
+                                <input type="text" class="form-control" name="altura_imc" required
+                                    placeholder="Ingresa tu altura (cm)" value="{{ datos_usuario.altura if datos_usuario else '' }}">
+                            </div>
                         </div>
-                    </div>
+                        <button type="submit" class="btn btn-primary">Calcular IMC</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-4">
+        <div class="col-6">
+            <div class="card text-bg-light mb-3">
+                <div class="card-header">Calculadora de Tasa Metabólica Basal (TMB)</div>
+                <div class="card-body">
+                    <h5 class="card-title">¿Qué es la Tasa Metabólica Basal?</h5>
+                    <p>La TMB son las calorías que tu cuerpo quema en reposo.</p>
+                    <form method="POST" action="#">
+                        <div class="row mb-3">
+                            <div class="col-8 text-start">
+                                <input type="text" class="form-control" name="edad_tmb" required
+                                    placeholder="Ingresa tu edad" value="{{ datos_usuario.peso if datos_usuario else '' }}">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-8 text-start">
+                                <select class="form-select" name="genero_tmb" required>
+                                    <option value="" selected disabled>Selecciona tu Género</option>
+                                    <option value="hombre" {{ 'selected' if datos_usuario.genero == 'hombre' else '' }}>Hombre</option>
+                                    <option value="mujer" {{ 'selected' if datos_usuario.genero == 'mujer' else '' }}>Mujer</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-8 text-start">
+                                <input type="text" class="form-control" name="peso_tmb" required
+                                    placeholder="Ingresa tu peso (kg)" value="{{ datos_usuario.peso if datos_usuario else '' }}">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-8 text-start">
+                                <input type="text" class="form-control" name="altura_tmb" required
+                                    placeholder="Ingresa tu altura (cm)" value="{{ datos_usuario.altura if datos_usuario else '' }}">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Calcular TMB</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-4">
+        <div class="col-6">
+            <div class="card text-bg-light mb-3">
+                <div class="card-header">Calculadora de Gasto Calórico Total (GCT)</div>
+                <div class="card-body">
+                    <h5 class="card-title">¿Qué es el Gasto Calórico Total?</h5>
+                    <p>El GCT incluye tu TMB más las calorías de actividad física.</p>
+                    <form method="POST" action="#">
+                        <div class="row mb-3">
+                            <div class="col-8 text-start">
+                                <input type="text" class="form-control" name="tmb_gct" required
+                                    placeholder="Ingresa tu TMB" value="">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-8 text-start">
+                                <select class="form-select" name="actividad_gct" required>
+                                    <option value="" selected disabled>Nivel de Actividad</option>
+                                    <option value="sedentario" {{ 'selected' if datos_usuario.nivel_actividad == 'sedentario' else '' }}>Sedentario</option>
+                                    <option value="ligero" {{ 'selected' if datos_usuario.nivel_actividad == 'ligero' else '' }}>Ligero</option>
+                                    <option value="moderado" {{ 'selected' if datos_usuario.nivel_actividad == 'moderado' else '' }}>Moderado</option>
+                                    <option value="activo" {{ 'selected' if datos_usuario.nivel_actividad == 'activo' else '' }}>Activo</option>
+                                    <option value="atleta">Atleta</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Calcular GCT</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-4">
+        <div class="col-6">
+            <div class="card text-bg-light mb-3">
+                <div class="card-header">Calculadora de Macronutrientes</div>
+                <div class="card-body">
+                    <h5 class="card-title">¿Qué son los Macronutrientes?</h5>
+                    <p>Son proteínas, carbohidratos y grasas de tu dieta.</p>
+                    <form method="POST" action="#">
+                        <div class="row mb-3">
+                            <div class="col-8 text-start">
+                                <input type="text" class="form-control" name="calorias_macro" required
+                                    placeholder="Ingresa tus calorías diarias" value="">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-8 text-start">
+                                <select class="form-select" name="objetivo_macro" required>
+                                    <option value="" selected disabled>Selecciona tu Objetivo</option>
+                                    <option value="perder" {{ 'selected' if datos_usuario.objetivo == 'perder' else '' }}>Perder Peso</option>
+                                    <option value="mantener" {{ 'selected' if datos_usuario.objetivo == 'mantener' else '' }}>Mantener Peso</option>
+                                    <option value="ganar" {{ 'selected' if datos_usuario.objetivo == 'ganar' else '' }}>Ganar Masa Muscular</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-8 text-start">
+                                <select class="form-select" name="actividad_macro" required>
+                                    <option value="" selected disabled>Nivel de Actividad</option>
+                                    <option value="sedentario" {{ 'selected' if datos_usuario.nivel_actividad == 'sedentario' else '' }}>Sedentario</option>
+                                    <option value="ligero" {{ 'selected' if datos_usuario.nivel_actividad == 'ligero' else '' }}>Ligero</option>
+                                    <option value="moderado" {{ 'selected' if datos_usuario.nivel_actividad == 'moderado' else '' }}>Moderado</option>
+                                    <option value="activo" {{ 'selected' if datos_usuario.nivel_actividad == 'activo' else '' }}>Activo</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Calcular Macronutrientes</button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 </section>
-
 {% endblock %}
