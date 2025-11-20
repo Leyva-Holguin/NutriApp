@@ -94,6 +94,10 @@ def logout():
     flash('Has cerrado sesión correctamente', 'info')
     return redirect(url_for('index'))
 
+@app.route('/herramientas')
+def herramientas():
+    return render_template('herramientas.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
