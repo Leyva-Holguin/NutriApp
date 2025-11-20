@@ -119,6 +119,45 @@
     <div class="row mb-4">
         <div class="col-6">
             <div class="card text-bg-light mb-3">
+                <div class="card-header">Calculadora de Peso Corporal Ideal</div>
+                <div class="card-body">
+                    <h5 class="card-title">¿Qué es el Peso Corporal Ideal?</h5>
+                    <p>Es el peso considerado saludable para tu estatura y complexión física.</p>
+                    <form method="POST" action="#">
+                        <div class="row mb-3">
+                            <div class="col-8 text-start">
+                                <input type="text" class="form-control" name="altura_pci" required
+                                    placeholder="Ingresa tu altura (cm)" value="{{ datos_usuario.altura if datos_usuario else '' }}">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-8 text-start">
+                                <select class="form-select" name="genero_pci" required>
+                                    <option value="" selected disabled>Selecciona tu Género</option>
+                                    <option value="hombre" {{ 'selected' if datos_usuario.genero == 'hombre' else '' }}>Hombre</option>
+                                    <option value="mujer" {{ 'selected' if datos_usuario.genero == 'mujer' else '' }}>Mujer</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-8 text-start">
+                                <select class="form-select" name="complexion_pci" required>
+                                    <option value="" selected disabled>Tipo de Complexión</option>
+                                    <option value="pequena">Complexión Pequeña</option>
+                                    <option value="mediana">Complexión Mediana</option>
+                                    <option value="grande">Complexión Grande</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Calcular Peso Ideal</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mb-4">
+        <div class="col-6">
+            <div class="card text-bg-light mb-3">
                 <div class="card-header">Calculadora de Macronutrientes</div>
                 <div class="card-body">
                     <h5 class="card-title">¿Qué son los Macronutrientes?</h5>
