@@ -13,28 +13,33 @@
                         <div class="row mb-3">
                             <div class="col-8 text-start">
                                 <input type="text" class="form-control" id="edad_imc" name="edad_imc" required
-                                    placeholder="Ingresa tu edad" value="{{ datos_usuario.peso if datos_usuario else '' }}">
+                                    placeholder="Ingresa tu edad"
+                                    value="{{ datos_usuario.peso if datos_usuario else '' }}">
                             </div>
                         </div>
                         <div class="row mb-3">
                             <div class="col-8 text-start">
                                 <select class="form-select" id="genero_imc" name="genero_imc" required>
                                     <option value="" selected disabled>Selecciona tu Género</option>
-                                    <option value="hombre" {{ 'selected' if datos_usuario.genero == 'hombre' else '' }}>Hombre</option>
-                                    <option value="mujer" {{ 'selected' if datos_usuario.genero == 'mujer' else '' }}>Mujer</option>
+                                    <option value="hombre" {{ 'selected' if datos_usuario.genero=='hombre' else '' }}>
+                                        Hombre</option>
+                                    <option value="mujer" {{ 'selected' if datos_usuario.genero=='mujer' else '' }}>
+                                        Mujer</option>
                                 </select>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <div class="col-8 text-start">
                                 <input type="text" class="form-control" id="peso_imc" name="peso_imc" required
-                                    placeholder="Ingresa tu peso (kg)" value="{{ datos_usuario.peso if datos_usuario else '' }}">
+                                    placeholder="Ingresa tu peso (kg)"
+                                    value="{{ datos_usuario.peso if datos_usuario else '' }}">
                             </div>
                         </div>
                         <div class="row mb-3">
                             <div class="col-8 text-start">
                                 <input type="text" class="form-control" id="altura_imc" name="altura_imc" required
-                                    placeholder="Ingresa tu altura (cm)" value="{{ datos_usuario.altura if datos_usuario else '' }}">
+                                    placeholder="Ingresa tu altura (cm)"
+                                    value="{{ datos_usuario.altura if datos_usuario else '' }}">
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary">Calcular IMC</button>
@@ -59,28 +64,33 @@
                         <div class="row mb-3">
                             <div class="col-8 text-start">
                                 <input type="text" class="form-control" id="edad_tmb" name="edad_tmb" required
-                                    placeholder="Ingresa tu edad" value="{{ datos_usuario.peso if datos_usuario else '' }}">
+                                    placeholder="Ingresa tu edad"
+                                    value="{{ datos_usuario.peso if datos_usuario else '' }}">
                             </div>
                         </div>
                         <div class="row mb-3">
                             <div class="col-8 text-start">
                                 <select class="form-select" id="genero_tmb" name="genero_tmb" required>
                                     <option value="" selected disabled>Selecciona tu Género</option>
-                                    <option value="hombre" {{ 'selected' if datos_usuario.genero == 'hombre' else '' }}>Hombre</option>
-                                    <option value="mujer" {{ 'selected' if datos_usuario.genero == 'mujer' else '' }}>Mujer</option>
+                                    <option value="hombre" {{ 'selected' if datos_usuario.genero=='hombre' else '' }}>
+                                        Hombre</option>
+                                    <option value="mujer" {{ 'selected' if datos_usuario.genero=='mujer' else '' }}>
+                                        Mujer</option>
                                 </select>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <div class="col-8 text-start">
                                 <input type="text" class="form-control" id="peso_tmb" name="peso_tmb" required
-                                    placeholder="Ingresa tu peso (kg)" value="{{ datos_usuario.peso if datos_usuario else '' }}">
+                                    placeholder="Ingresa tu peso (kg)"
+                                    value="{{ datos_usuario.peso if datos_usuario else '' }}">
                             </div>
                         </div>
                         <div class="row mb-3">
                             <div class="col-8 text-start">
                                 <input type="text" class="form-control" id="altura_tmb" name="altura_tmb" required
-                                    placeholder="Ingresa tu altura (cm)" value="{{ datos_usuario.altura if datos_usuario else '' }}">
+                                    placeholder="Ingresa tu altura (cm)"
+                                    value="{{ datos_usuario.altura if datos_usuario else '' }}">
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary">Calcular TMB</button>
@@ -112,10 +122,14 @@
                             <div class="col-8 text-start">
                                 <select class="form-select" id="actividad_gct" name="actividad_gct" required>
                                     <option value="" selected disabled>Nivel de Actividad</option>
-                                    <option value="sedentario" {{ 'selected' if datos_usuario.nivel_actividad == 'sedentario' else '' }}>Sedentario</option>
-                                    <option value="ligero" {{ 'selected' if datos_usuario.nivel_actividad == 'ligero' else '' }}>Ligero</option>
-                                    <option value="moderado" {{ 'selected' if datos_usuario.nivel_actividad == 'moderado' else '' }}>Moderado</option>
-                                    <option value="activo" {{ 'selected' if datos_usuario.nivel_actividad == 'activo' else '' }}>Activo</option>
+                                    <option value="sedentario" {{ 'selected' if
+                                        datos_usuario.nivel_actividad=='sedentario' else '' }}>Sedentario</option>
+                                    <option value="ligero" {{ 'selected' if datos_usuario.nivel_actividad=='ligero'
+                                        else '' }}>Ligero</option>
+                                    <option value="moderado" {{ 'selected' if datos_usuario.nivel_actividad=='moderado'
+                                        else '' }}>Moderado</option>
+                                    <option value="activo" {{ 'selected' if datos_usuario.nivel_actividad=='activo'
+                                        else '' }}>Activo</option>
                                     <option value="atleta">Atleta</option>
                                 </select>
                             </div>
@@ -142,15 +156,18 @@
                         <div class="row mb-3">
                             <div class="col-8 text-start">
                                 <input type="text" class="form-control" id="altura_pci" name="altura_pci" required
-                                    placeholder="Ingresa tu altura (cm)" value="{{ datos_usuario.altura if datos_usuario else '' }}">
+                                    placeholder="Ingresa tu altura (cm)"
+                                    value="{{ datos_usuario.altura if datos_usuario else '' }}">
                             </div>
                         </div>
                         <div class="row mb-3">
                             <div class="col-8 text-start">
                                 <select class="form-select" id="genero_pci" name="genero_pci" required>
                                     <option value="" selected disabled>Selecciona tu Género</option>
-                                    <option value="hombre" {{ 'selected' if datos_usuario.genero == 'hombre' else '' }}>Hombre</option>
-                                    <option value="mujer" {{ 'selected' if datos_usuario.genero == 'mujer' else '' }}>Mujer</option>
+                                    <option value="hombre" {{ 'selected' if datos_usuario.genero=='hombre' else '' }}>
+                                        Hombre</option>
+                                    <option value="mujer" {{ 'selected' if datos_usuario.genero=='mujer' else '' }}>
+                                        Mujer</option>
                                 </select>
                             </div>
                         </div>
@@ -185,17 +202,20 @@
                     <form method="POST" action="{{ url_for('cal_macronutrientes') }}">
                         <div class="row mb-3">
                             <div class="col-8 text-start">
-                                <input type="text" class="form-control" id="calorias_macro" name="calorias_macro" required
-                                    placeholder="Ingresa tus calorías diarias" value="">
+                                <input type="text" class="form-control" id="calorias_macro" name="calorias_macro"
+                                    required placeholder="Ingresa tus calorías diarias" value="">
                             </div>
                         </div>
                         <div class="row mb-3">
                             <div class="col-8 text-start">
                                 <select class="form-select" id="objetivo_macro" name="objetivo_macro" required>
                                     <option value="" selected disabled>Selecciona tu Objetivo</option>
-                                    <option value="perder" {{ 'selected' if datos_usuario.objetivo == 'perder' else '' }}>Perder Peso</option>
-                                    <option value="mantener" {{ 'selected' if datos_usuario.objetivo == 'mantener' else '' }}>Mantener Peso</option>
-                                    <option value="ganar" {{ 'selected' if datos_usuario.objetivo == 'ganar' else '' }}>Ganar Masa Muscular</option>
+                                    <option value="perder" {{ 'selected' if datos_usuario.objetivo=='perder' else '' }}>
+                                        Perder Peso</option>
+                                    <option value="mantener" {{ 'selected' if datos_usuario.objetivo=='mantener' else ''
+                                        }}>Mantener Peso</option>
+                                    <option value="ganar" {{ 'selected' if datos_usuario.objetivo=='ganar' else '' }}>
+                                        Ganar Masa Muscular</option>
                                 </select>
                             </div>
                         </div>
@@ -203,10 +223,14 @@
                             <div class="col-8 text-start">
                                 <select class="form-select" id="actividad_macro" name="actividad_macro" required>
                                     <option value="" selected disabled>Nivel de Actividad</option>
-                                    <option value="sedentario" {{ 'selected' if datos_usuario.nivel_actividad == 'sedentario' else '' }}>Sedentario</option>
-                                    <option value="ligero" {{ 'selected' if datos_usuario.nivel_actividad == 'ligero' else '' }}>Ligero</option>
-                                    <option value="moderado" {{ 'selected' if datos_usuario.nivel_actividad == 'moderado' else '' }}>Moderado</option>
-                                    <option value="activo" {{ 'selected' if datos_usuario.nivel_actividad == 'activo' else '' }}>Activo</option>
+                                    <option value="sedentario" {{ 'selected' if
+                                        datos_usuario.nivel_actividad=='sedentario' else '' }}>Sedentario</option>
+                                    <option value="ligero" {{ 'selected' if datos_usuario.nivel_actividad=='ligero'
+                                        else '' }}>Ligero</option>
+                                    <option value="moderado" {{ 'selected' if datos_usuario.nivel_actividad=='moderado'
+                                        else '' }}>Moderado</option>
+                                    <option value="activo" {{ 'selected' if datos_usuario.nivel_actividad=='activo'
+                                        else '' }}>Activo</option>
                                 </select>
                             </div>
                         </div>
@@ -227,13 +251,21 @@
                 <div class="card-header">Analizador de Recetas o Platos</div>
                 <div class="card-body">
                     <h5 class="card-title">¿Qué puedes hacer aquí?</h5>
-                    <p>Analiza el valor nutricional de tus recetas o encuentra recetas por ingrediente (en ingles).</p>
+                    <p>Analiza el valor nutricional de tus recetas o encuentra recetas por ingrediente (en inglés).</p>
                     <form method="POST" action="{{ url_for('analizar_receta') }}" class="mb-4">
                         <div class="row mb-3">
                             <div class="col-12 text-start">
-                                <label for="texto_receta" class="form-label">Analizar Receta:</label>
-                                <textarea class="form-control" id="texto_receta" name="texto_receta" rows="3" placeholder="Ej: 2 huevos, 1 taza de arroz, 200g de pollo, 1 cebolla..." required></textarea>
-                                <div class="form-text">Ingresa los ingredientes de tu receta separados por comas.</div>
+                                <label for="titulo_receta" class="form-label">Título de la Receta:</label>
+                                <input type="text" class="form-control" id="titulo_receta" name="titulo_receta" 
+                                    placeholder="Ej: Chicken Rice Bowl" required>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-12 text-start">
+                                <label for="texto_receta" class="form-label">Ingredientes:</label>
+                                <textarea class="form-control" id="texto_receta" name="texto_receta" rows="3"
+                                    placeholder="Ej: 2 eggs, 1 cup rice, 200g chicken, 1 onion..." required></textarea>
+                                <div class="form-text">Ingresa los ingredientes en <strong>inglés</strong> para mejor resultado.<br> Ejemplo: "2 eggs, 1 cup rice, 200g chicken, 1 onion"</div>
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary">Analizar Receta</button>
@@ -242,15 +274,21 @@
                         <div class="row mb-3">
                             <div class="col-12 text-start">
                                 <label for="ingrediente_receta" class="form-label">Buscar Recetas:</label>
-                                <input type="text" class="form-control" id="ingrediente_receta" name="ingrediente_receta"placeholder="Ej: pollo, arroz, aguacate..." required>
-                                <div class="form-text">Busca recetas que contengan este ingrediente.</div>
+                                <input type="text" class="form-control" id="ingrediente_receta"
+                                    name="ingrediente_receta" placeholder="Ej: chicken, rice, avocado..." required>
+                                <div class="form-text">Busca recetas que contengan este ingrediente (en inglés).</div>
                             </div>
                         </div>
                         <button type="submit" class="btn btn-success">Buscar Recetas</button>
-                    </form>  
+                    </form>
                     {% if resultado_receta %}
                     <div class="alert alert-info mt-3">
                         {{ resultado_receta|safe }}
+                    </div>
+                    {% endif %}
+                    {% if resultado_busqueda_receta %}
+                    <div class="alert alert-success mt-3">
+                        {{ resultado_busqueda_receta|safe }}
                     </div>
                     {% endif %}
                 </div>

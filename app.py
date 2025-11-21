@@ -1,16 +1,18 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session
 import requests
+
+# Reemplaza con tu clave de API si es diferente.
+API_KEY = "1320e414b5414686ac59e14362f5a2d3"
+API_BASE = "https://api.spoonacular.com"
+
 app = Flask(__name__) 
 USUARIOS_REGISTRADOS = {
     'daniel@correo.com':{
         'password': 'daniel',
         'nombre': 'daniel',
-        }
+    }
 }
 app.config['SECRET_KEY'] = 'la_primera_es_la_primera'
-
-API_KEY = "1320e414b5414686ac59e14362f5a2d3"
-API_BASE = "https://api.spoonacular.com"
 
 @app.route('/')
 def index():
@@ -51,16 +53,15 @@ def registrar():
             flash(error, 'error')
             return render_template('registro.html')
         else:
-
             USUARIOS_REGISTRADOS[correo] = {
                 'password': password,
                 'nombre': f"{nombre} {apellido}",
-                'dia':  dia,
+                'dia': dia,
                 'mes': mes,
                 'year': year,
                 'genero': genero,
                 'peso': peso,
-                'altura' : altura,
+                'altura': altura,
                 'objetivo': objetivo,
                 'nivel_actividad': nivel_actividad,
                 'nivel_experiencia': nivel_experiencia,
@@ -249,48 +250,64 @@ def analizar_receta():
             datos_usuario = USUARIOS_REGISTRADOS[usuario_correo]
     resultado = None
     try:
+        titulo = request.form.get('titulo_receta', '').strip()
         texto_receta = request.form.get('texto_receta', '').strip()
-        if not texto_receta:
-            resultado = 'Por favor ingresa una receta o lista de ingredientes'
+        
+        if not titulo or not texto_receta:
+            resultado = 'Por favor ingresa tanto el título como los ingredientes'
         else:
-            url = f"{API_BASE}/recipes/analyze"
+            # Usar un enfoque diferente: buscar recetas similares y obtener su nutrición
+            url = f"{API_BASE}/recipes/complexSearch"
             params = {
                 'apiKey': API_KEY,
-                'title': 'Receta analizada',
-                'ingredients': texto_receta,
-                'instructions': texto_receta,
-                'language': 'en'
+                'query': titulo,  # Usar el título como query de búsqueda
+                'number': 1,
+                'addRecipeInformation': True,
+                'addRecipeNutrition': True,
+                'instructionsRequired': True,
+                'fillIngredients': True
             }
-            response = requests.post(url, json=params)
+            
+            response = requests.get(url, params=params)
+            
             if response.status_code == 200:
                 data = response.json()
-                nutricion = data.get('nutrition', {})
-                nutrientes = nutricion.get('nutrients', [])
-                calorias = {}
-                proteinas = {}
-                carbohidratos = {}
-                grasas = {}
-                for nutriente in nutrientes:
-                    if nutriente['name'] == 'Calories':
-                        calorias = nutriente
-                    elif nutriente['name'] == 'Protein':
-                        proteinas = nutriente
-                    elif nutriente['name'] == 'Carbohydrates':
-                        carbohidratos = nutriente
-                    elif nutriente['name'] == 'Fat':
-                        grasas = nutriente
+                recetas = data.get('results', [])
                 
-                resultado = f"""
-                <strong>Análisis Nutricional:</strong><br>
-                • Calorías: {calorias.get('amount', 'N/A')} {calorias.get('unit', '')}<br>
-                • Proteínas: {proteinas.get('amount', 'N/A')} {proteinas.get('unit', '')}<br>
-                • Carbohidratos: {carbohidratos.get('amount', 'N/A')} {carbohidratos.get('unit', '')}<br>
-                • Grasas: {grasas.get('amount', 'N/A')} {grasas.get('unit', '')}
-                """
+                if recetas:
+                    receta = recetas[0]
+                    nutricion = receta.get('nutrition', {})
+                    nutrientes = nutricion.get('nutrients', [])
+                    
+                    calorias, proteinas, carbohidratos, grasas = {}, {}, {}, {}
+                    
+                    for nutriente in nutrientes:
+                        name = nutriente.get('name', '').lower()
+                        if 'calorie' in name:
+                            calorias = nutriente
+                        elif 'protein' in name:
+                            proteinas = nutriente
+                        elif 'carbohydrate' in name:
+                            carbohidratos = nutriente
+                        elif 'fat' in name and 'saturated' not in name:
+                            grasas = nutriente
+
+                    resultado = f"""
+                    <strong>Receta Similar Encontrada - {receta['title']}:</strong><br>
+                    • Calorías: {calorias.get('amount', 'N/A'):.0f} {calorias.get('unit', '')}<br>
+                    • Proteínas: {proteinas.get('amount', 'N/A'):.1f} {proteinas.get('unit', '')}<br>
+                    • Carbohidratos: {carbohidratos.get('amount', 'N/A'):.1f} {carbohidratos.get('unit', '')}<br>
+                    • Grasas: {grasas.get('amount', 'N/A'):.1f} {grasas.get('unit', '')}<br><br>
+                    <em>Nota: Esta es una receta similar de la base de datos. Para análisis preciso de tus ingredientes específicos, usa ingredientes en inglés bien especificados.</em>
+                    """
+                else:
+                    resultado = 'No se encontraron recetas similares. Intenta con un título más común en inglés.'
             else:
-                resultado = 'Error al analizar la receta. Intenta con otros ingredientes.'
+                resultado = f'Error en la búsqueda. Código: {response.status_code}. Intenta con otro título.'
+                
     except Exception as e:
         resultado = f'Error: {str(e)}'
+    
     return render_template('herramientas.html', datos_usuario=datos_usuario, resultado_receta=resultado)
 
 @app.route('/buscar_receta', methods=['POST'])
@@ -321,24 +338,30 @@ def buscar_receta():
                 if recetas:
                     resultado = "<strong>Recetas encontradas:</strong><br>"
                     for i, receta in enumerate(recetas, 1):
-                        nutricion = receta.get('nutrition', {})
-                        nutrientes = nutricion.get('nutrients', [])
                         calorias_receta = {}
-                        for nutriente in nutrientes:
-                            if nutriente['name'] == 'Calories':
-                                calorias_receta = nutriente
-                                break                     
+                        nutricion = receta.get('nutrition')
+                        if nutricion:
+                             for nutriente in nutricion.get('nutrients', []):
+                                if nutriente['name'] == 'Calories':
+                                    calorias_receta = nutriente
+                                    break 
+                        calorias_str = f"{calorias_receta.get('amount', 'N/A'):.0f} calorías" if isinstance(calorias_receta.get('amount'), (int, float)) else "Calorías N/A"
                         resultado += f"""
                         {i}. <strong>{receta['title']}</strong><br>
-                           {calorias_receta.get('amount', 'N/A')} calorías<br>
+                            {calorias_str}<br>
                         """
                 else:
-                    resultado = 'No se encontraron recetas con ese ingrediente'
+                    resultado = 'No se encontraron recetas con ese ingrediente'     
+                return render_template('herramientas.html', datos_usuario=datos_usuario, resultado_busqueda_receta=resultado)
             else:
-                resultado = 'Error al buscar recetas'
+                try:
+                    error_info = response.json().get('message', f'Error desconocido. Código de estado: {response.status_code}')
+                except requests.exceptions.JSONDecodeError:
+                    error_info = f'Error de API. Código de estado: {response.status_code}.'
+                resultado = f'Error al buscar recetas: {error_info}'
     except Exception as e:
-        resultado = f'Error: {str(e)}'
-    return render_template('herramientas.html', datos_usuario=datos_usuario, resultado_receta=resultado)
+        resultado = f'Error inesperado: {str(e)}'
+    return render_template('herramientas.html', datos_usuario=datos_usuario, resultado_busqueda_receta=resultado)
 
 if __name__ == '__main__':
     app.run(debug=True)
