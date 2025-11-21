@@ -45,7 +45,7 @@
                                     value="{{ datos_usuario.altura if datos_usuario else '' }}">
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Calcular IMC</button>
+                        <button type="submit" class="btn btn-warning">Calcular IMC</button>
                     </form>
                     {% if resultado_imc %}
                     <div class="alert alert-success mt-3">
@@ -102,7 +102,7 @@
                                     value="{{ datos_usuario.altura if datos_usuario else '' }}">
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Calcular TMB</button>
+                        <button type="submit" class="btn btn-warning">Calcular TMB</button>
                     </form>
                     {% if resultado_tmb %}
                     <div class="alert alert-info mt-3">
@@ -150,7 +150,7 @@
                                 </select>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Calcular GCT</button>
+                        <button type="submit" class="btn btn-warning">Calcular GCT</button>
                     </form>
                     {% if resultado_gct %}
                     <div class="alert alert-warning mt-3">
@@ -203,7 +203,7 @@
                                 </select>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Calcular Peso Ideal</button>
+                        <button type="submit" class="btn btn-warning">Calcular Peso Ideal</button>
                     </form>
                     {% if resultado_peso_ideal %}
                     <div class="alert alert-success mt-3">
@@ -262,7 +262,7 @@
                                 </select>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Calcular Macronutrientes</button>
+                        <button type="submit" class="btn btn-warning">Calcular Macronutrientes</button>
                     </form>
                     {% if resultado_macronutrientes %}
                     <div class="alert alert-info mt-3">
@@ -303,7 +303,7 @@
                                     resultado.<br> Ejemplo: "2 eggs, 1 cup rice, 200g chicken, 1 onion"</div>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Analizar Receta</button>
+                        <button type="submit" class="btn btn-warning">Analizar Receta</button>
                     </form>
                     <form method="POST" action="{{ url_for('buscar_receta') }}">
                         <div class="row mb-3">
@@ -314,7 +314,7 @@
                                 <div class="form-text">Busca recetas que contengan este ingrediente (en inglés).</div>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-success">Buscar Recetas</button>
+                        <button type="submit" class="btn btn-warning">Buscar Recetas</button>
                     </form>
                     {% if resultado_receta %}
                     <div class="alert alert-info mt-3">
