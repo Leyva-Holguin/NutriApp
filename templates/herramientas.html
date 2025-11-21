@@ -3,7 +3,7 @@
 {% block contenido %}
 <section class="container pt-4">
     <div class="row mb-4">
-        <div class="col-6">
+        <div class="col-12 col-md-6">
             <div class="card text-bg-light mb-3">
                 <div class="card-header">Calculadora de Índice de Masa Corporal (IMC)</div>
                 <div class="card-body">
@@ -52,9 +52,13 @@
                 </div>
             </div>
         </div>
+        <div class="col-12 col-md-6 text-center">
+            <img src="{{ url_for('static', filename='img/inicio.jpeg') }}" class="img-fluid rounded-4"
+                alt="Frutas en un plato con forma de corazón.">
+        </div>
     </div>
     <div class="row mb-4">
-        <div class="col-6">
+        <div class="col-12 col-md-6">
             <div class="card text-bg-light mb-3">
                 <div class="card-header">Calculadora de Tasa Metabólica Basal (TMB)</div>
                 <div class="card-body">
@@ -105,12 +109,12 @@
         </div>
     </div>
     <div class="row mb-4">
-        <div class="col-6">
+        <div class="col-12 col-md-6">
             <div class="card text-bg-light mb-3">
                 <div class="card-header">Calculadora de Gasto Calórico Total (GCT)</div>
                 <div class="card-body">
                     <h5 class="card-title">¿Qué es el Gasto Calórico Total?</h5>
-                    <p>El GCT incluye tu TMB más las calorías de actividad física.</p>
+                    <p>El GCT incluye tu TMB más las calorías de actividad física. Son la cantidad total de calorias que tu cuerpo quema en un dia.</p>
                     <form method="POST" action="{{ url_for('cal_gct') }}">
                         <div class="row mb-3">
                             <div class="col-8 text-start">
@@ -146,7 +150,7 @@
         </div>
     </div>
     <div class="row mb-4">
-        <div class="col-6">
+        <div class="col-12 col-md-6">
             <div class="card text-bg-light mb-3">
                 <div class="card-header">Calculadora de Peso Corporal Ideal</div>
                 <div class="card-body">
@@ -193,7 +197,7 @@
         </div>
     </div>
     <div class="row mb-4">
-        <div class="col-6">
+        <div class="col-12 col-md-6">
             <div class="card text-bg-light mb-3">
                 <div class="card-header">Calculadora de Macronutrientes</div>
                 <div class="card-body">
@@ -246,7 +250,7 @@
         </div>
     </div>
     <div class="row mb-4">
-        <div class="col-6">
+        <div class="col-12 col-md-6">
             <div class="card text-bg-light mb-3">
                 <div class="card-header">Analizador de Recetas o Platos</div>
                 <div class="card-body">
@@ -256,7 +260,7 @@
                         <div class="row mb-3">
                             <div class="col-12 text-start">
                                 <label for="titulo_receta" class="form-label">Título de la Receta:</label>
-                                <input type="text" class="form-control" id="titulo_receta" name="titulo_receta" 
+                                <input type="text" class="form-control" id="titulo_receta" name="titulo_receta"
                                     placeholder="Ej: Chicken Rice Bowl" required>
                             </div>
                         </div>
@@ -265,7 +269,8 @@
                                 <label for="texto_receta" class="form-label">Ingredientes:</label>
                                 <textarea class="form-control" id="texto_receta" name="texto_receta" rows="3"
                                     placeholder="Ej: 2 eggs, 1 cup rice, 200g chicken, 1 onion..." required></textarea>
-                                <div class="form-text">Ingresa los ingredientes en <strong>inglés</strong> para mejor resultado.<br> Ejemplo: "2 eggs, 1 cup rice, 200g chicken, 1 onion"</div>
+                                <div class="form-text">Ingresa los ingredientes en <strong>inglés</strong> para mejor
+                                    resultado.<br> Ejemplo: "2 eggs, 1 cup rice, 200g chicken, 1 onion"</div>
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary">Analizar Receta</button>
@@ -296,4 +301,5 @@
         </div>
     </div>
 </section>
+
 {% endblock %}
