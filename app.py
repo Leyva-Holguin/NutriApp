@@ -66,6 +66,7 @@ def registrar():
                 'nivel_actividad': nivel_actividad,
                 'nivel_experiencia': nivel_experiencia,
                 'correo': correo,
+                'edad': edad,
                 }
             flash(f"Registro exitoso: {nombre}. Ahora puedes iniciar sesión.", 'success')
             return redirect(url_for('iniciar'))
