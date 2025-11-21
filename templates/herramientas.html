@@ -2,7 +2,7 @@
 {% block titulo %}Herramientas{% endblock %}
 {% block contenido %}
 <section class="container pt-4">
-    <div class="row mb-4">
+    <div class="row mb-4 align-items-center">
         <div class="col-12 col-md-6">
             <div class="card text-bg-light mb-3">
                 <div class="card-header">Calculadora de Índice de Masa Corporal (IMC)</div>
@@ -52,12 +52,14 @@
                 </div>
             </div>
         </div>
-        <div class="col-12 col-md-6 text-center">
-            <img src="{{ url_for('static', filename='img/inicio.jpeg') }}" class="img-fluid rounded-4"
+
+        <div class="col-12 col-md-6">
+            <img src="{{ url_for('static', filename='img/imc.jpeg') }}" class="img-fluid rounded-4"
                 alt="Frutas en un plato con forma de corazón.">
         </div>
     </div>
-    <div class="row mb-4">
+
+    <div class="row mb-4 align-items-center">
         <div class="col-12 col-md-6">
             <div class="card text-bg-light mb-3">
                 <div class="card-header">Calculadora de Tasa Metabólica Basal (TMB)</div>
@@ -107,14 +109,21 @@
                 </div>
             </div>
         </div>
+
+        <div class="col-12 col-md-6">
+            <img src="{{ url_for('static', filename='img/tmb.jpg') }}" class="img-fluid rounded-4"
+                alt="Frutas en un plato con forma de corazón.">
+        </div>
     </div>
-    <div class="row mb-4">
+
+    <div class="row mb-4 align-items-center">
         <div class="col-12 col-md-6">
             <div class="card text-bg-light mb-3">
                 <div class="card-header">Calculadora de Gasto Calórico Total (GCT)</div>
                 <div class="card-body">
                     <h5 class="card-title">¿Qué es el Gasto Calórico Total?</h5>
-                    <p>El GCT incluye tu TMB más las calorías de actividad física. Son la cantidad total de calorias que tu cuerpo quema en un dia.</p>
+                    <p>El GCT incluye tu TMB más las calorías de actividad física. Son la cantidad total de calorias que
+                        tu cuerpo quema en un dia.</p>
                     <form method="POST" action="{{ url_for('cal_gct') }}">
                         <div class="row mb-3">
                             <div class="col-8 text-start">
@@ -148,8 +157,14 @@
                 </div>
             </div>
         </div>
+
+        <div class="col-12 col-md-6">
+            <img src="{{ url_for('static', filename='img/gct.png') }}" class="img-fluid rounded-4"
+                alt="Frutas en un plato con forma de corazón.">
+        </div>
     </div>
-    <div class="row mb-4">
+
+    <div class="row mb-4 align-items-center">
         <div class="col-12 col-md-6">
             <div class="card text-bg-light mb-3">
                 <div class="card-header">Calculadora de Peso Corporal Ideal</div>
@@ -195,8 +210,14 @@
                 </div>
             </div>
         </div>
+
+        <div class="col-12 col-md-6">
+            <img src="{{ url_for('static', filename='img/psc.png') }}" class="img-fluid rounded-4"
+                alt="Frutas en un plato con forma de corazón.">
+        </div>
     </div>
-    <div class="row mb-4">
+
+    <div class="row mb-4 align-items-center">
         <div class="col-12 col-md-6">
             <div class="card text-bg-light mb-3">
                 <div class="card-header">Calculadora de Macronutrientes</div>
@@ -248,9 +269,15 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row mb-4">
+
         <div class="col-12 col-md-6">
+            <img src="{{ url_for('static', filename='img/macro.jpg') }}" class="img-fluid rounded-4"
+                alt="Frutas en un plato con forma de corazón.">
+        </div>
+    </div>
+
+    <div class="row mb-4 justify-content-center text-center">
+        <div class="col-8 text-center">
             <div class="card text-bg-light mb-3">
                 <div class="card-header">Analizador de Recetas o Platos</div>
                 <div class="card-body">
