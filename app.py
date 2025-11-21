@@ -43,6 +43,7 @@ def registrar():
         correo = request.form['correo']
         password = request.form['password']
         confirmPassword = request.form.get("confirmPassword")
+        edad = 2025 - int(year)
         if password != confirmPassword:
             error = "Las contraseñas no coinciden"
         elif correo in USUARIOS_REGISTRADOS:
