@@ -352,10 +352,7 @@ def buscar_receta():
                     resultado = 'No se encontraron recetas con ese ingrediente'     
                 return render_template('herramientas.html', datos_usuario=datos_usuario, resultado_busqueda_receta=resultado)
             else:
-                try:
-                    error_info = response.json().get('message', f'Error desconocido. Código de estado: {response.status_code}')
-                except requests.exceptions.JSONDecodeError:
-                    error_info = f'Error de API. Código de estado: {response.status_code}.'
+                error_info = f'Error de API.'
                 resultado = f'Error al buscar recetas: {error_info}'
     except Exception as e:
         resultado = f'Error inesperado: {str(e)}'
