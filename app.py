@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session
 import requests
 
-# Reemplaza con tu clave de API si es diferente.
 API_KEY = "1320e414b5414686ac59e14362f5a2d3"
 API_BASE = "https://api.spoonacular.com"
 
@@ -256,11 +255,10 @@ def analizar_receta():
         if not titulo or not texto_receta:
             resultado = 'Por favor ingresa tanto el título como los ingredientes'
         else:
-            # Usar un enfoque diferente: buscar recetas similares y obtener su nutrición
             url = f"{API_BASE}/recipes/complexSearch"
             params = {
                 'apiKey': API_KEY,
-                'query': titulo,  # Usar el título como query de búsqueda
+                'query': titulo,  
                 'number': 1,
                 'addRecipeInformation': True,
                 'addRecipeNutrition': True,
