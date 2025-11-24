@@ -25,6 +25,10 @@ def registro():
 def educacion():
     return render_template('educacion.html')
 
+@app.route('/modulo3')
+def modulo3():
+    return render_template('modulo3.html')
+
 @app.route('/registrar', methods=['GET', 'POST'])
 def registrar():
     if request.method == 'POST':
@@ -341,7 +345,7 @@ def buscar_receta():
                         calorias_receta = {}
                         nutricion = receta.get('nutrition')
                         if nutricion:
-                             for nutriente in nutricion.get('nutrients', []):
+                            for nutriente in nutricion.get('nutrients', []):
                                 if nutriente['name'] == 'Calories':
                                     calorias_receta = nutriente
                                     break 
@@ -360,5 +364,54 @@ def buscar_receta():
         resultado = f'Error inesperado: {str(e)}'
     return render_template('herramientas.html', datos_usuario=datos_usuario, resultado_busqueda_receta=resultado)
 
+@app.route('/buscar_receta2', methods=['POST'])
+def buscar_receta2():
+    datos_usuario = None
+    if session.get('logueado'):
+        usuario_correo = session.get('usuario_correo')
+        if usuario_correo in USUARIOS_REGISTRADOS:
+            datos_usuario = USUARIOS_REGISTRADOS[usuario_correo]
+    resultado = None
+    try:
+        ingrediente = request.form.get('ingrediente_receta', '').strip().lower()
+        if not ingrediente:
+            resultado = 'Por favor ingresa un ingrediente'
+        else:
+            url = f"{API_BASE}/recipes/complexSearch"
+            params = {
+                'apiKey': API_KEY,
+                'query': ingrediente,
+                'number': 3,
+                'addRecipeNutrition': True,
+                'language': 'en'
+            }
+            response = requests.get(url, params=params)
+            if response.status_code == 200:
+                data = response.json()
+                recetas = data.get('results', [])
+                if recetas:
+                    resultado = "<strong>Recetas encontradas:</strong><br>"
+                    for i, receta in enumerate(recetas, 1):
+                        calorias_receta = {}
+                        nutricion = receta.get('nutrition')
+                        if nutricion:
+                            for nutriente in nutricion.get('nutrients', []):
+                                if nutriente['name'] == 'Calories':
+                                    calorias_receta = nutriente
+                                    break 
+                        calorias_str = f"{calorias_receta.get('amount', 'N/A'):.0f} calorías" if isinstance(calorias_receta.get('amount'), (int, float)) else "Calorías N/A"
+                        resultado += f"""
+                        {i}. <strong>{receta['title']}</strong><br>
+                            {calorias_str}<br>
+                        """
+                else:
+                    resultado = 'No se encontraron recetas con ese ingrediente'     
+                return render_template('modulo3.html', datos_usuario=datos_usuario, resultado_busqueda_receta=resultado)
+            else:
+                error_info = f'Error de API.'
+                resultado = f'Error al buscar recetas: {error_info}'
+    except Exception as e:
+        resultado = f'Error inesperado: {str(e)}'
+    return render_template('modulo3.html', datos_usuario=datos_usuario, resultado_busqueda_receta=resultado)
 if __name__ == '__main__':
     app.run(debug=True)
