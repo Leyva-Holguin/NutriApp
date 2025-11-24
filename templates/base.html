@@ -42,6 +42,9 @@
                                 <a class="nav-link text-light"
                                     href="http://127.0.0.1:5000/herramientas">Herramientas</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" href="http://127.0.0.1:5000/modulo3">Banco de recetas</a>
+                            </li>
                             {% if session.get('logueado') %}
                             <li class="nav-item">
                                 <a class="nav-link text-light" href="{{ url_for('logout') }}">Cerrar Sesión</a>
