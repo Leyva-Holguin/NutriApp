@@ -12,13 +12,17 @@
 <body class="bg-success-subtle">
     <div class="container-fluid">
         <header class="row pt-5">
-            <div class="col-12 mt-2 bg-light">
-                <h1 class="text-success">NutriApp</h1>
+            <div class="col-12 justify-content-center bg-success-subtle mt-3 p-0">
+                <img src="{{ url_for('static', filename='img/ban.jpg') }}" alt="Encabezado" class="img-fluid">
             </div>
 
-            <nav class="navbar navbar-expand-lg bg-success fixed-top">
+            <nav class="navbar navbar-expand-lg bg-success navbar-dark fixed-top">
                 <div class="container-fluid">
-                    <a class="navbar-brand text-light" href="#">Menú</a>
+                    <a class="navbar-brand text-light d-flex align-items-center" href="#"> <img
+                            src="{{ url_for('static', filename='img/NutriApp.png') }}" alt="Logo" width="95" height="52"
+                            class="d-inline-block">
+                        NutriApp
+                    </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
                         aria-label="Toggle navigation">
@@ -31,23 +35,25 @@
                                     href="http://127.0.0.1:5000">Inicio</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-light" href="http://127.0.0.1:5000/educacion">Educación e información</a>
+                                <a class="nav-link text-light" href="http://127.0.0.1:5000/educacion">Educación e
+                                    información</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-light" href="http://127.0.0.1:5000/herramientas">Herramientas</a>
+                                <a class="nav-link text-light"
+                                    href="http://127.0.0.1:5000/herramientas">Herramientas</a>
                             </li>
                             {% if session.get('logueado') %}
-                                <li class="nav-item">
-                                    <a class="nav-link text-light" href="{{ url_for('logout') }}">Cerrar Sesión</a>
-                                </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" href="{{ url_for('logout') }}">Cerrar Sesión</a>
+                            </li>
                             {% else %}
                             <li class="nav-item">
                                 <a class="nav-link text-light" href="http://127.0.0.1:5000/registro">Registrarse</a>
                             </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-light" href="http://127.0.0.1:5000/iniciar">Iniciar sesion</a>
-                                </li>
-                            {% endif %}  
+                            <li class="nav-item">
+                                <a class="nav-link text-light" href="http://127.0.0.1:5000/iniciar">Iniciar sesion</a>
+                            </li>
+                            {% endif %}
                         </ul>
                     </div>
                 </div>
@@ -61,7 +67,7 @@
 
         <footer class="row text-light text-center py-3 bg-success mt-5">
             <div class="col-12">
-                <h6>Cuida tu alimentación, cuida de ti.</h6>
+                <h6>Cuidarte es más fácil de lo que te imaginas.</h6>
                 <h6>@Derechos reservados 2025</h6>
             </div>
         </footer>
