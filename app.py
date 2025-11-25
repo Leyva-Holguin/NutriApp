@@ -369,6 +369,11 @@ def buscar_receta2():
     datos_usuario = None
     resultado = None
     try:
+        excluido = None
+        maxima = request.form.get('maxima', '').strip().lower
+        minima= request.form.get('minima', '').strip()
+        dieta = request.form.get('dieta', '').strip().lower
+        tiempo= request.form.get('tiempo', '').strip()
         ingrediente = request.form.get('ingrediente_receta', '').strip().lower()
         if not ingrediente:
             resultado = 'Por favor ingresa un ingrediente'
@@ -379,7 +384,12 @@ def buscar_receta2():
                 'query': ingrediente,
                 'number': 3,
                 'addRecipeNutrition': True,
-                'language': 'en'
+                'language': 'en',
+                # "maxReadyTime": tiempo,  
+                #"diet": dieta,
+                #"excludeIngredients": excluido,
+                #"maxCalories": maxima,
+                #"minCalories": minima,
             }
             response = requests.get(url, params=params)
             if response.status_code == 200:
