@@ -42,6 +42,7 @@ def registrar():
         peso = request.form['peso']
         altura = request.form['altura']
         objetivo = request.form['objetivo']
+        intolerante = request.form['intolerante']
         nivel_actividad = request.form['nivel_actividad']
         nivel_experiencia = request.form['nivel_experiencia']
         correo = request.form['correo']
@@ -68,7 +69,6 @@ def registrar():
                 'altura': altura,
                 'objetivo': objetivo,
                 'nivel_actividad': nivel_actividad,
-                'nivel_experiencia': nivel_experiencia,
                 'correo': correo,
                 'edad': edad,
                 }
