@@ -391,7 +391,8 @@ def buscar_receta2():
                 recetas = data.get('results', [])
                 if recetas:
                     resultado = "<strong>Recetas encontradas:</strong><br>"
-                    for i, receta in enumerate(recetas, 1):
+                    i = 1
+                    for receta in recetas:
                         calorias_receta = {}
                         nutricion = receta.get('nutrition')
                         if nutricion:
@@ -404,6 +405,7 @@ def buscar_receta2():
                         {i}. <strong>{receta['title']}</strong><br>
                             {calorias_str}<br>
                         """
+                        i += 1
                 else:
                     resultado = 'No se encontraron recetas con ese ingrediente'     
                 return render_template('modulo3.html', datos_usuario=datos_usuario, resultado_busqueda_receta=resultado)
