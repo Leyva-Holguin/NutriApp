@@ -367,10 +367,6 @@ def buscar_receta():
 @app.route('/buscar_receta2', methods=['POST'])
 def buscar_receta2():
     datos_usuario = None
-    if session.get('logueado'):
-        usuario_correo = session.get('usuario_correo')
-        if usuario_correo in USUARIOS_REGISTRADOS:
-            datos_usuario = USUARIOS_REGISTRADOS[usuario_correo]
     resultado = None
     try:
         ingrediente = request.form.get('ingrediente_receta', '').strip().lower()

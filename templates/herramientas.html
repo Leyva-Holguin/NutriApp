@@ -305,25 +305,9 @@
                         </div>
                         <button type="submit" class="btn btn-warning">Analizar Receta</button>
                     </form>
-                    <form method="POST" action="{{ url_for('buscar_receta') }}">
-                        <div class="row mb-3">
-                            <div class="col-12 text-start">
-                                <label for="ingrediente_receta" class="form-label">Buscar Recetas:</label>
-                                <input type="text" class="form-control" id="ingrediente_receta"
-                                    name="ingrediente_receta" placeholder="Ej: chicken, rice, avocado..." required>
-                                <div class="form-text">Busca recetas que contengan este ingrediente (en inglés).</div>
-                            </div>
-                        </div>
-                        <button type="submit" class="btn btn-warning">Buscar Recetas</button>
-                    </form>
                     {% if resultado_receta %}
                     <div class="alert alert-info mt-3">
                         {{ resultado_receta|safe }}
-                    </div>
-                    {% endif %}
-                    {% if resultado_busqueda_receta %}
-                    <div class="alert alert-success mt-3">
-                        {{ resultado_busqueda_receta|safe }}
                     </div>
                     {% endif %}
                 </div>
