@@ -308,7 +308,6 @@ def analizar_receta():
                     resultado = 'No se encontraron recetas similares. Intenta con un título más común en inglés.'
             else:
                 resultado = f'Error en la búsqueda. Código: {response.status_code}. Intenta con otro título.'
-                
     except Exception as e:
         resultado = f'Error: {str(e)}'
     
@@ -367,59 +366,144 @@ def buscar_receta():
 @app.route('/buscar_receta2', methods=['POST'])
 def buscar_receta2():
     datos_usuario = None
+    if session.get('logueado'):
+        usuario_correo = session.get('usuario_correo')
+        if usuario_correo in USUARIOS_REGISTRADOS:
+            datos_usuario = USUARIOS_REGISTRADOS[usuario_correo]
     resultado = None
     try:
-        excluido = None
-        maxima = request.form.get('maxima', '').strip().lower
-        minima= request.form.get('minima', '').strip()
-        dieta = request.form.get('dieta', '').strip().lower
-        tiempo= request.form.get('tiempo', '').strip()
         ingrediente = request.form.get('ingrediente_receta', '').strip().lower()
+        minima = request.form.get('minima', '').strip()
+        maxima = request.form.get('maxima', '').strip()
+        dieta = request.form.get('dieta', '').strip().lower()
+        tiempo = request.form.get('tiempo', '').strip()
+        excluido = request.form.get('excluido', '').strip().lower()
         if not ingrediente:
-            resultado = 'Por favor ingresa un ingrediente'
+            resultado = 'Por favor ingresa un ingrediente principal'
         else:
             url = f"{API_BASE}/recipes/complexSearch"
             params = {
                 'apiKey': API_KEY,
                 'query': ingrediente,
                 'number': 3,
+                'addRecipeInformation': True,
                 'addRecipeNutrition': True,
+                'fillIngredients': True,
+                'instructionsRequired': True,
                 'language': 'en',
-                # "maxReadyTime": tiempo,  
-                #"diet": dieta,
-                #"excludeIngredients": excluido,
-                #"maxCalories": maxima,
-                #"minCalories": minima,
             }
+            if minima:
+                params['minCalories'] = minima
+            if maxima:
+                params['maxCalories'] = maxima
+            if dieta:
+                params['diet'] = dieta
+            if tiempo:
+                params['maxReadyTime'] = tiempo
+            if excluido:
+                params['excludeIngredients'] = excluido
             response = requests.get(url, params=params)
             if response.status_code == 200:
                 data = response.json()
                 recetas = data.get('results', [])
                 if recetas:
-                    resultado = "<strong>Recetas encontradas:</strong><br>"
-                    i = 1
+                    filtros = []
+                    if minima: filtros.append(f"Mín: {minima} cal")
+                    if maxima: filtros.append(f"Máx: {maxima} cal")
+                    if dieta: filtros.append(f"Dieta: {dieta}")
+                    if tiempo: filtros.append(f"Tiempo: {tiempo}min")
+                    if excluido: filtros.append(f"Sin: {excluido}")
+                    filtros_str = " | ".join(filtros) if filtros else "Sin filtros"
+                    resultado = f"<strong>Recetas encontradas ({filtros_str}):</strong><br><br>"
+                    contador_recetas = 1
                     for receta in recetas:
                         calorias_receta = {}
+                        proteinas_receta = {}
+                        carbohidratos_receta = {}
+                        grasas_receta = {}
                         nutricion = receta.get('nutrition')
                         if nutricion:
                             for nutriente in nutricion.get('nutrients', []):
-                                if nutriente['name'] == 'Calories':
+                                name = nutriente.get('name', '').lower()
+                                if 'calorie' in name:
                                     calorias_receta = nutriente
-                                    break 
-                        calorias_str = f"{calorias_receta.get('amount', 'N/A'):.0f} calorías" if isinstance(calorias_receta.get('amount'), (int, float)) else "Calorías N/A"
+                                elif 'protein' in name:
+                                    proteinas_receta = nutriente
+                                elif 'carbohydrate' in name:
+                                    carbohidratos_receta = nutriente
+                                elif 'fat' in name and 'saturated' not in name:
+                                    grasas_receta = nutriente
+                        calorias_amount = calorias_receta.get('amount', 'N/A')
+                        if type(calorias_amount) == int or type(calorias_amount) == float:
+                            calorias_str = f"{calorias_amount:.0f} calorías"
+                        else:
+                            calorias_str = "Calorías no disponibles"
+                        ready_time = receta.get('readyInMinutes', 'N/A')
+                        porciones = receta.get('servings', 'N/A')
+                        ingredientes = receta.get('extendedIngredients', [])
+                        ingredientes_str = ""
+                        if ingredientes:
+                            ingredientes_str = "<br><strong>Lista de ingredientes:</strong><br>"
+                            contador_ingredientes = 1
+                            for ingrediente_item in ingredientes:
+                                ingrediente_original = ingrediente_item.get('original', '')
+                                ingredientes_str += f"{contador_ingredientes}. {ingrediente_original}<br>"
+                                contador_ingredientes += 1
+                        else:
+                            ingredientes_str = "<br><strong>Ingredientes:</strong><br>No disponibles"
+                        instrucciones_str = ""
+                        analyzed_instructions = receta.get('analyzedInstructions', [])
+                        if analyzed_instructions and len(analyzed_instructions) > 0:
+                            steps = analyzed_instructions[0].get('steps', [])
+                            if steps:
+                                instrucciones_str = "<br><strong>Instrucciones:</strong><br>"
+                                contador_pasos = 1
+                                for step in steps:
+                                    instrucciones_str += f"<strong>Paso {contador_pasos}:</strong> {step.get('step', '')}<br>"
+                                    contador_pasos += 1
+                        else:
+                            instrucciones_str = "<br><strong>Instrucciones:</strong><br>No disponibles"                   
                         resultado += f"""
-                        {i}. <strong>{receta['title']}</strong><br>
-                            {calorias_str}<br>
-                        """
-                        i += 1
+                        <div class='mb-5 p-4 border rounded bg-light'>
+                            <h4 class='text-primary'>{contador_recetas}. {receta['title']}</h4>                         
+                            <div class='row mb-3'>
+                                <div class='col-md-12'>
+                                    <strong>Información nutricional por porción:</strong><br>
+                                    <strong>Tiempo:</strong> {ready_time} minutos | 
+                                    <strong>Porciones:</strong> {porciones} | 
+                                    <strong>Calorías:</strong> {calorias_str}<br>
+                                    <strong>Proteínas:</strong> {proteinas_receta.get('amount', 'N/A'):.1f}g | 
+                                    <strong>Carbohidratos:</strong> {carbohidratos_receta.get('amount', 'N/A'):.1f}g | 
+                                    <strong>Grasas:</strong> {grasas_receta.get('amount', 'N/A'):.1f}g
+                                </div>
+                            </div>
+                            <div class='row'>
+                                <div class='col-md-12'>
+                                    {ingredientes_str}
+                                </div>
+                            </div>                      
+                            <div class='row mt-2'>
+                                <div class='col-md-12'>
+                                    {instrucciones_str}
+                                </div>
+                            </div>
+                            <div class='mt-3 text-end'>
+                                <small class='text-muted'>
+                                    ID: {receta.get('id', 'N/A')} | 
+                                    Puntuación: {receta.get('spoonacularScore', 'N/A')}/100
+                                </small>
+                            </div>
+                        </div>
+                        <hr>
+                        """  
+                        contador_recetas += 1      
                 else:
-                    resultado = 'No se encontraron recetas con ese ingrediente'     
-                return render_template('modulo3.html', datos_usuario=datos_usuario, resultado_busqueda_receta=resultado)
+                    resultado = 'No se encontraron recetas con esos criterios. Intenta con filtros más amplios.'    
             else:
-                error_info = f'Error de API.'
-                resultado = f'Error al buscar recetas: {error_info}'
+                resultado = f'Error al buscar recetas. Código: {response.status_code}'
     except Exception as e:
-        resultado = f'Error inesperado: {str(e)}'
+        resultado = f'Error inesperado: {str(e)}'  
     return render_template('modulo3.html', datos_usuario=datos_usuario, resultado_busqueda_receta=resultado)
+
 if __name__ == '__main__':
     app.run(debug=True)
