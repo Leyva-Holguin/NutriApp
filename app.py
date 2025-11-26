@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session
 import requests
 
-API_KEY = "1320e414b5414686ac59e14362f5a2d3"
+API_KEY = "f544c737fc744d32b0f11b70a940647d"
 API_BASE = "https://api.spoonacular.com"
 
 app = Flask(__name__) 
@@ -257,60 +257,152 @@ def analizar_receta():
     try:
         titulo = request.form.get('titulo_receta', '').strip()
         texto_receta = request.form.get('texto_receta', '').strip()
-        
         if not titulo or not texto_receta:
             resultado = 'Por favor ingresa tanto el título como los ingredientes'
         else:
-            url = f"{API_BASE}/recipes/complexSearch"
-            params = {
-                'apiKey': API_KEY,
-                'query': titulo,  
-                'number': 1,
-                'addRecipeInformation': True,
-                'addRecipeNutrition': True,
-                'instructionsRequired': True,
-                'fillIngredients': True
+            url_analisis = f"{API_BASE}/recipes/parseIngredients"
+            params_url = {
+                'apiKey': API_KEY, 
             }
+            data_post = {
+                'ingredientList': texto_receta, 
+                'servings': 1,
+                'includeNutrition': True
+            }
+            headers = {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+            response_receta = requests.post(
+                url_analisis, 
+                params=params_url,
+                data=data_post, 
+                headers=headers
+            )
             
-            response = requests.get(url, params=params)
-            
-            if response.status_code == 200:
-                data = response.json()
-                recetas = data.get('results', [])
-                
-                if recetas:
-                    receta = recetas[0]
-                    nutricion = receta.get('nutrition', {})
+            if response_receta.status_code == 200:
+                analisis_ingredientes_raw = response_receta.json()
+                analisis_ingredientes = []
+                total_calorias = 0
+                total_proteinas = 0
+                total_carbohidratos = 0
+                total_grasas = 0
+                total_fibra = 0
+                total_azucar = 0
+                contador_ingredientes = 1
+                for ingrediente_info in analisis_ingredientes_raw:
+                    nombre_original = ingrediente_info.get('original', 'Ingrediente no especificado')
+                    nutricion = ingrediente_info.get('nutrition', {})
                     nutrientes = nutricion.get('nutrients', [])
-                    
-                    calorias, proteinas, carbohidratos, grasas = {}, {}, {}, {}
-                    
+                    info_ingrediente = {
+                        'numero': contador_ingredientes,
+                        'nombre': nombre_original,
+                        'calorias': 0,
+                        'proteinas': 0,
+                        'carbohidratos': 0,
+                        'grasas': 0,
+                        'fibra': 0,
+                        'azucar': 0,
+                        'error': False
+                    }
                     for nutriente in nutrientes:
                         name = nutriente.get('name', '').lower()
+                        amount = nutriente.get('amount', 0)
                         if 'calorie' in name:
-                            calorias = nutriente
+                            info_ingrediente['calorias'] = amount
+                            total_calorias += amount
                         elif 'protein' in name:
-                            proteinas = nutriente
+                            info_ingrediente['proteinas'] = amount
+                            total_proteinas += amount
                         elif 'carbohydrate' in name:
-                            carbohidratos = nutriente
-                        elif 'fat' in name and 'saturated' not in name:
-                            grasas = nutriente
-
-                    resultado = f"""
-                    <strong>Receta Similar Encontrada - {receta['title']}:</strong><br>
-                    • Calorías: {calorias.get('amount', 'N/A'):.0f} {calorias.get('unit', '')}<br>
-                    • Proteínas: {proteinas.get('amount', 'N/A'):.1f} {proteinas.get('unit', '')}<br>
-                    • Carbohidratos: {carbohidratos.get('amount', 'N/A'):.1f} {carbohidratos.get('unit', '')}<br>
-                    • Grasas: {grasas.get('amount', 'N/A'):.1f} {grasas.get('unit', '')}<br><br>
-                    <em>Nota: Esta es una receta similar de la base de datos. Para análisis preciso de tus ingredientes específicos, usa ingredientes en inglés bien especificados.</em>
-                    """
-                else:
-                    resultado = 'No se encontraron recetas similares. Intenta con un título más común en inglés.'
+                            info_ingrediente['carbohidratos'] = amount
+                            total_carbohidratos += amount
+                        elif 'fat' in name and 'saturated' not in name: 
+                            info_ingrediente['grasas'] = amount
+                            total_grasas += amount
+                        elif 'fiber' in name:
+                            info_ingrediente['fibra'] = amount
+                            total_fibra += amount
+                        elif 'sugar' in name:
+                            info_ingrediente['azucar'] = amount
+                            total_azucar += amount
+                    analisis_ingredientes.append(info_ingrediente)
+                    contador_ingredientes += 1
+                resultado = f"""
+                <div class='alert alert-success'>
+                    <h4>Analisis Nutricional - {titulo}</h4>
+                    <hr>
+                    <h5>Resumen Total de la Receta:</h5>
+                    <div class='table-responsive'>
+                        <table class='table table-bordered'>
+                            <thead class='table-light'>
+                                <tr>
+                                    <th>Calorias</th>
+                                    <th>Proteinas</th>
+                                    <th>Carbohidratos</th>
+                                    <th>Grasas</th>
+                                    <th>Fibra</th>
+                                    <th>Azucar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>{total_calorias:.0f}</strong></td>
+                                    <td><strong>{total_proteinas:.1f}g</strong></td>
+                                    <td><strong>{total_carbohidratos:.1f}g</strong></td>
+                                    <td><strong>{total_grasas:.1f}g</strong></td>
+                                    <td><strong>{total_fibra:.1f}g</strong></td>
+                                    <td><strong>{total_azucar:.1f}g</strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <hr>
+                    <h5>Analisis por Ingrediente:</h5>
+                """
+                for ingrediente in analisis_ingredientes:
+                    if ingrediente.get('error'): 
+                        resultado += f"""
+                        <div class='mb-2 p-2 border rounded bg-warning'>
+                            <strong>{ingrediente['numero']}. {ingrediente['nombre']}</strong><br>
+                            <span class='text-muted'>No se pudo analizar este ingrediente (Error de la API)</span>
+                        </div>
+                        """
+                    else:
+                        resultado += f"""
+                        <div class='mb-2 p-2 border rounded'>
+                            <strong>{ingrediente['numero']}. {ingrediente['nombre']}</strong><br>
+                            <small>
+                                Calorias: {ingrediente['calorias']:.0f} | 
+                                Proteinas: {ingrediente['proteinas']:.1f}g | 
+                                Carbohidratos: {ingrediente['carbohidratos']:.1f}g | 
+                                Grasas: {ingrediente['grasas']:.1f}g
+                                {f" | Fibra: {ingrediente['fibra']:.1f}g" if ingrediente['fibra'] > 0 else ""}
+                                {f" | Azucar: {ingrediente['azucar']:.1f}g" if ingrediente['azucar'] > 0 else ""}
+                            </small>
+                        </div>
+                        """
+                resultado += """
+                    <hr>
+                    <small class='text-muted'>
+                    <strong>Nota:</strong> Este analisis calcula los valores nutricionales sumando cada ingrediente por separado.
+                    Los valores pueden variar segun el metodo de preparacion y porciones.
+                    </small>
+                </div>
+                """ 
             else:
-                resultado = f'Error en la búsqueda. Código: {response.status_code}. Intenta con otro título.'
+                try:
+                    error_data = response_receta.json()
+                    mensaje_error = error_data.get('message', 'No se pudo obtener el mensaje de error de la API.')
+                except:
+                    mensaje_error = "Respuesta de la API no es JSON o está vacía."
+                resultado = f"""
+                    <div class='alert alert-danger'>
+                        Error de API. Código de estado: <strong>{response_receta.status_code}</strong>.
+                        <br>Mensaje: {mensaje_error}
+                    </div>
+                """
     except Exception as e:
-        resultado = f'Error: {str(e)}'
-    
+        resultado = f'<div class="alert alert-danger">Error inesperado en Flask: {str(e)}</div>'
     return render_template('herramientas.html', datos_usuario=datos_usuario, resultado_receta=resultado)
 
 @app.route('/buscar_receta', methods=['POST'])
