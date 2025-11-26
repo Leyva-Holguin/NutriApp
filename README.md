@@ -24,3 +24,6 @@ pip install flask requests
 pip freeze > requirements.txt
 
 pip install -r requirements.txt
+
+NOTA: Tuvimos que reemplazar la API que usariamos en un incio debido a cambios en las politicas de esta api haciendo que no podamos acceder a la version gratis al dejar de existir
+NOTA 2: La API actual no tiene paramatros para filtrar la dificultad de la receta
