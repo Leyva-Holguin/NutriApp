@@ -11,7 +11,8 @@
                 <div class="card-header">Calculadora de Índice de Masa Corporal (IMC)</div>
                 <div class="card-body">
                     <h5 class="card-title">¿Qué es el Índice de Masa Corporal?</h5>
-                    <p>El IMC sirve para identificar si una persona está en su peso ideal.</p>
+                    <p>El IMC sirve para identificar si tu peso esta dentro de un rango saludable según tu altura.</p>
+                    <p>Prueba ingresando tus datos para obtener tu IMC (Ingresa el numero solo)</p>
                     <form method="POST" action="{{ url_for('cal_imc') }}">
                         <div class="row mb-3">
                             <div class="col-8 text-start">
@@ -70,7 +71,7 @@
                 <div class="card-header">Calculadora de Tasa Metabólica Basal (TMB)</div>
                 <div class="card-body">
                     <h5 class="card-title">¿Qué es la Tasa Metabólica Basal?</h5>
-                    <p>La TMB son las calorías que tu cuerpo quema en reposo.</p>
+                    <p>La TMB indica cuantas calorias usa tu cuerpo solo para mantenerse vivo, incluso cuando estas en reposo. Conocer este valor nos permite saber cuantas calorías necesitamos como minimo cada dia.</p>
                     <form method="POST" action="{{ url_for('cal_tmb') }}">
                         <div class="row mb-3">
                             <div class="col-8 text-start">
@@ -129,8 +130,7 @@
                 <div class="card-header">Calculadora de Gasto Calórico Total (GCT)</div>
                 <div class="card-body">
                     <h5 class="card-title">¿Qué es el Gasto Calórico Total?</h5>
-                    <p>El GCT incluye tu TMB más las calorías de actividad física. Son la cantidad total de calorias que
-                        tu cuerpo quema en un dia.</p>
+                    <p>El CGT muestra cuántas calorías usas en un dia completo sumando tu metabolismo basal y tu actividad fisica. Este numero ayuda a ajustar la alimentación según si quieres bajar de, mantener o subir de peso. </p>
                     <form method="POST" action="{{ url_for('cal_gct') }}">
                         <div class="row mb-3">
                             <div class="col-8 text-start">
@@ -179,7 +179,7 @@
                 <div class="card-header">Calculadora de Peso Corporal Ideal</div>
                 <div class="card-body">
                     <h5 class="card-title">¿Qué es el Peso Corporal Ideal?</h5>
-                    <p>Es el peso considerado saludable para tu estatura y complexión física.</p>
+                    <p>El peso corporal ideal es un rango aproximado basado en tu altura y sexo. No es un número exacto pero sirve para orientarte</p>
                     <form method="POST" action="{{ url_for('cal_peso_ideal') }}">
                         <div class="row mb-3">
                             <div class="col-8 text-start">
@@ -234,7 +234,7 @@
                 <div class="card-header">Calculadora de Macronutrientes</div>
                 <div class="card-body">
                     <h5 class="card-title">¿Qué son los Macronutrientes?</h5>
-                    <p>Son proteínas, carbohidratos y grasas de tu dieta.</p>
+                    <p>Los macronutrientes son proteínas, carbohidratros y grasas y cada uno aporta energía.</p>
                     <form method="POST" action="{{ url_for('cal_macronutrientes') }}">
                         <div class="row mb-3">
                             <div class="col-8 text-start">
