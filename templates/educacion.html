@@ -37,8 +37,9 @@
                 alt="Sellos de advertencia.">
         </div>
     </div>
-    <div class="row align-items-center">
-        <div class="col-12 col-md-7">
+
+    <div class="row">
+        <div class="col-12 col-md-8">
             <div class="card text-bg-light mb-3">
                 <div class="card-body">
                     <h5 class="card-title">Cómo leer una etiqueta paso a paso</h5>
@@ -89,8 +90,11 @@
             </div>
         </div>
 
-        <div class="col-12 col-md-5">
-            <img src="{{ url_for('static', filename='img/etq nutriconal.jpg') }}" class="img-fluid rounded-4"
+        <div class="col-12 col-md-4 align-items-center">
+            <img src="{{ url_for('static', filename='img/etq1.jpg') }}" class="img-fluid rounded-4 mb-4"
+                alt="Etiqueta nutricional.">
+
+            <img src="{{ url_for('static', filename='img/ejem1.jpg') }}" class="img-fluid rounded-4"
                 alt="Etiqueta nutricional.">
         </div>
 
@@ -107,7 +111,18 @@
                     <p class="card-text">Todos los años aparecen nuevas dietas que prometen resultados rápidos como
                         "perder peso" o "desintoxicar el cuerpo". Sin embargo muchas de ellas carecen de respaldo
                         cientifico y pueden poner en riesgo la salud.</p>
-                    <h5>Mitos más comunes</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card text-bg-light mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Mitos más comunes</h5>
+                    <p class="card-text">
                     <p><strong>“Entre menos comas, más rápido bajarás de peso.”</strong></p>
                     <p>Reducir tanto las calorías puede provocar
                         fatiga, pérdida de masa muscular y un efecto rebote.
@@ -132,7 +147,17 @@
                         De lo contrario, eliminar estos grupos sin razón podria causar <strong>deficiencias
                             nutricionales</strong> o
                         limitar innecesariamente tu alimentación.</p>
-                    <h5>Verdades importantes</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card text-bg-light mb-3">
+                <div class="card-body">
+                    <h5 class="card-title">Verdades importantes </h5>
+                    <p class="card-text">
                     <p><strong>"La mejor dieta es la que puedes mantener."</strong></p>
                     <p>No sirve una dieta que solo funcione dos semanas.
                         Un buen plan se adapta a tu ritmo, gustos y necesidades a largo plazo.</p>
@@ -166,7 +191,7 @@
 
     <div class="row">
         <div class="col-12 col-md-3">
-            <div class="card w-100 h-100">
+            <div class="card text-bg-light  w-100 h-100">
                 <img src="{{ url_for('static', filename='img/carbon.avif') }}" class="img-fluid" alt="carbohidratos.">
                 <div class="card-body">
                     <h3>Carbohidratos</h3>
@@ -181,7 +206,7 @@
         </div>
 
         <div class="col-12 col-md-3">
-            <div class="card w-100 h-100">
+            <div class="card text-bg-light w-100 h-100">
                 <img src="{{ url_for('static', filename='img/pro.webp') }}" class="img-fluid" alt="proteínas.">
                 <div class="card-body">
                     <h3>Proteínas</h3>
@@ -196,7 +221,7 @@
         </div>
 
         <div class="col-12 col-md-3">
-            <div class="card w-100 h-100">
+            <div class="card text-bg-light w-100 h-100">
                 <img src="{{ url_for('static', filename='img/gras.jpeg') }}" class="img-fluid" alt="Grasas.">
                 <div class="card-body">
                     <h3>Grasas saludables</h3>
@@ -211,7 +236,7 @@
         </div>
 
         <div class="col-12 col-md-3">
-            <div class="card w-100 h-100">
+            <div class="card text-bg-light w-100 h-100">
                 <img src="{{ url_for('static', filename='img/balance.webp') }}" class="img-fluid"
                     alt="Balance energetico.">
                 <div class="card-body">
@@ -244,79 +269,78 @@
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="row">
-            <div class="col-12 col-md-4">
-                <div class="card w-100 h-100">
-                    <div class="card-body">
-                        <h3>Hidratación</h3>
-                        <p class="card-text">Función: El agua regula la temperatura, transporta nutrientes, elimina
-                            desechos y
-                            mantiene las articulaciones lubricadas.</p>
-                        <p>Recomendación: Se aconseja consumir entre 6 y 8 vasos de agua al día (1.5 a 2 litros),
-                            dependiendo de la edad, clima y nivel de actividad física.</p>
-                        <p>Evitar: Refrescos, bebidas energéticas y jugos industrializados con alto contenido de azúcar,
-                            ya que pueden provocar deshidratación o exceso calórico.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-4">
-                <div class="card w-100 h-100">
-                    <div class="card-body">
-                        <h3>Fibra dietética</h3>
-                        <p class="card-text">Función: Mejora la digestión, previene el estreñimiento y ayuda a controlar
-                            los niveles de glucosa y colesterol en sangre.</p>
-                        <p>Fuentes: Frutas con cáscara, verduras, legumbres, avena, pan integral, semillas y frutos
-                            secos.</p>
-                        <p>Recomendación: Consumir al menos 25 a 30 gramos de fibra diarios.</p>
-                        <p>Dato: La fibra debe de ir acompañada de suficiente agua para evitar malestar intestinal.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-4">
-                <div class="card w-100 h-100">
-                    <div class="card-body">
-                        <h3>Vitaminas y minerales</h3>
-                        <p class="card-text">Función: Son esenciales para el funcionamiento del sistema inmunológico, la
-                            formación de huesos, la producción de energía y la prevención de enfermedades.</p>
-                        <p>Fuentes:</p>
-                        <ul>
-                            <li>Vitamina A: zanahoria, calabaza, mango.</li>
-                            <li>Vitamina C: cítricos, guayaba, pimientos.</li>
-                            <li>Hierro: carnes magras, espinaca, lentejas.</li>
-                            <li>Calcio: leche, yogur, tofu, almendras.</li>
-                            <li>Zinc: legumbres, nueces, semillas..</li>
-                        </ul>
-                    </div>
+    <div class="row mb-3">
+        <div class="col-12 col-md-4">
+            <div class="card text-bg-light w-100 h-100">
+                <div class="card-body">
+                    <h3>Hidratación</h3>
+                    <p class="card-text">Función: El agua regula la temperatura, transporta nutrientes, elimina
+                        desechos y
+                        mantiene las articulaciones lubricadas.</p>
+                    <p>Recomendación: Se aconseja consumir entre 6 y 8 vasos de agua al día (1.5 a 2 litros),
+                        dependiendo de la edad, clima y nivel de actividad física.</p>
+                    <p>Evitar: Refrescos, bebidas energéticas y jugos industrializados con alto contenido de azúcar,
+                        ya que pueden provocar deshidratación o exceso calórico.</p>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-12">
-                <div class="card text-bg-light">
-                    <div class="card-header">Otros elementos</div>
-                    <div class="card-body">
-                        <p class="card-text"><strong>Sueño adecuado:</strong>favorece la regulación hormonal y el
-                            metabolismo.</p>
-                        <p><strong>Actividad física:</strong>mejora la absorción de nutrientes y la salud
-                            cardiovascular.</p>
-                        <p><strong>Moderación:</strong>los alimentos saludables también deben de consumirse en
-                            cantidades adecuadas.</p>
-                    </div>
+
+        <div class="col-12 col-md-4">
+            <div class="card text-bg-light w-100 h-100">
+                <div class="card-body">
+                    <h3>Fibra dietética</h3>
+                    <p class="card-text">Función: Mejora la digestión, previene el estreñimiento y ayuda a controlar
+                        los niveles de glucosa y colesterol en sangre.</p>
+                    <p>Fuentes: Frutas con cáscara, verduras, legumbres, avena, pan integral, semillas y frutos
+                        secos.</p>
+                    <p>Recomendación: Consumir al menos 25 a 30 gramos de fibra diarios.</p>
+                    <p>Dato: La fibra debe de ir acompañada de suficiente agua para evitar malestar intestinal.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-4">
+            <div class="card text-bg-light w-100 h-100">
+                <div class="card-body">
+                    <h3>Vitaminas y minerales</h3>
+                    <p class="card-text">Función: Son esenciales para el funcionamiento del sistema inmunológico, la
+                        formación de huesos, la producción de energía y la prevención de enfermedades.</p>
+                    <p>Fuentes:</p>
+                    <ul>
+                        <li>Vitamina A: zanahoria, calabaza, mango.</li>
+                        <li>Vitamina C: cítricos, guayaba, pimientos.</li>
+                        <li>Hierro: carnes magras, espinaca, lentejas.</li>
+                        <li>Calcio: leche, yogur, tofu, almendras.</li>
+                        <li>Zinc: legumbres, nueces, semillas..</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card text-bg-light">
+                <div class="card-body">
+                    <h5 class="card-title">Otros elementos</h5>
+                    <p class="card-text"><strong>Sueño adecuado: </strong>Favorece la regulación hormonal y el
+                        metabolismo.</p>
+                    <p><strong>Actividad física: </strong>Mejora la absorción de nutrientes y la salud
+                        cardiovascular.</p>
+                    <p><strong>Moderación: </strong>Los alimentos saludables también deben de consumirse en
+                        cantidades adecuadas.</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
 <section class="container mt-5">
     <div class="row">
         <div class="col-12">
             <div class="card text-bg-light mb-3">
-                <div class="card-header">
-                    <h2 class="mb-0">Recursos Descargables</h2>
-                </div>
+                <div class="card-header">Recursos Descargables</div>
                 <div class="card-body">
                     <p class="card-text">Complementa tu nutrición con estos recursos prácticos que puedes descargar y
                         usar cuando los necesites.</p>
