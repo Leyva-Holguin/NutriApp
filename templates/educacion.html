@@ -38,8 +38,8 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-12 col-md-8">
+    <div class="row align-items-center">
+        <div class="col-12 col-md-7">
             <div class="card text-bg-light mb-3">
                 <div class="card-body">
                     <h5 class="card-title">Cómo leer una etiqueta paso a paso</h5>
@@ -80,7 +80,7 @@
                     <ol>
                         <li>Compara productos similares y elige el que tenga menos sellos y menos ingredientes
                             procesados.</li>
-                        <li> No te dejes engañar por frases como “natural” o “light”; lo importante está en la tabla y
+                        <li> No te dejes engañar por frases como “natural” o “light”, lo importante está en la tabla y
                             los sellos.</li>
                         <li> Considera tu porción real, no la del envase.</li>
                         <li>Prefiere consumir alimentos frescos o mínimamente procesados: frutas, verduras, legumbres,
@@ -90,7 +90,7 @@
             </div>
         </div>
 
-        <div class="col-12 col-md-4 align-items-center">
+        <div class="col-12 col-md-5">
             <img src="{{ url_for('static', filename='img/etq1.jpg') }}" class="img-fluid rounded-4 mb-4"
                 alt="Etiqueta nutricional.">
 
@@ -353,27 +353,12 @@
         <div class="col-12 col-md-6 col-lg-4 mb-4">
             <div class="card text-bg-light h-100">
                 <div class="card-body">
-                    <h5 class="card-title">Planilla de Ejercicios Básicos</h5>
-                    <p class="card-text">Rutina completa para principiantes que puedes hacer en casa sin equipo
-                        especial.</p>
-                </div>
-                <div class="card-footer">
-                    <a href="{{ url_for('static', filename='descargas/ejercicios.pdf') }}" class="btn btn-primary w-100"
-                        download>
-                        Descargar PDF
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-md-6 col-lg-4 mb-4">
-            <div class="card text-bg-light h-100">
-                <div class="card-body">
                     <h5 class="card-title">Guía de Porciones Saludables</h5>
                     <p class="card-text">Aprende a medir tus porciones usando referencias prácticas de tu mano.</p>
                 </div>
                 <div class="card-footer">
                     <a href="{{ url_for('static', filename='descargas/guia-alimentos.pdf') }}"
-                        class="btn btn-primary w-100" download>
+                        class="btn btn-warning w-100" download>
                         Descargar PDF
                     </a>
                 </div>
@@ -386,11 +371,10 @@
                 <div class="card-body">
                     <h5 class="card-title">Lista de Compras Saludables</h5>
                     <p class="card-text">Lista organizada por secciones del supermercado para compras nutritivas.</p>
-
                 </div>
                 <div class="card-footer">
                     <a href="{{ url_for('static', filename='descargas/cartera-alimentacion.pdf') }}"
-                        class="btn btn-primary w-100" download>
+                        class="btn btn-danger w-100" download>
                         Descargar PDF
                     </a>
                 </div>
@@ -417,7 +401,7 @@
                     <p class="card-text">Recetas fáciles y rápidas para comidas nutritivas.</p>
                 </div>
                 <div class="card-footer">
-                    <a href="{{ url_for('static', filename='descargas/recetario.pdf') }}" class="btn btn-primary w-100"
+                    <a href="{{ url_for('static', filename='descargas/recetario.pdf') }}" class="btn btn-warning w-100"
                         download>
                         Descargar PDF
                     </a>
@@ -431,14 +415,14 @@
                     <p class="card-text">Rutina de ejercicio para las mujeres.</p>
                 </div>
                 <div class="card-footer">
-                    <a href="{{ url_for('static', filename='descargas/MUJER.pdf') }}" class="btn btn-primary w-100"
+                    <a href="{{ url_for('static', filename='descargas/MUJER.pdf') }}" class="btn btn-danger w-100"
                         download>
                         Descargar PDF
                     </a>
                 </div>
             </div>
         </div>
-          <div class="col-12 col-md-6 col-lg-4 mb-4">
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
             <div class="card text-bg-light h-100">
                 <div class="card-body">
                     <h5 class="card-title">Ejercicios basicos para Hombres</h5>
