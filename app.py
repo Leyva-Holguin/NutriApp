@@ -42,6 +42,7 @@ def registrar():
         peso = request.form['peso']
         altura = request.form['altura']
         objetivo = request.form['objetivo']
+        alergia = request.form['alergias']
         nivel_actividad = request.form['nivel_actividad']
         nivel_experiencia = request.form['nivel_experiencia']
         correo = request.form['correo']
@@ -68,7 +69,6 @@ def registrar():
                 'altura': altura,
                 'objetivo': objetivo,
                 'nivel_actividad': nivel_actividad,
-                'nivel_experiencia': nivel_experiencia,
                 'correo': correo,
                 'edad': edad,
                 }
@@ -367,12 +367,13 @@ def buscar_receta():
 @app.route('/buscar_receta2', methods=['POST'])
 def buscar_receta2():
     datos_usuario = None
-    if session.get('logueado'):
-        usuario_correo = session.get('usuario_correo')
-        if usuario_correo in USUARIOS_REGISTRADOS:
-            datos_usuario = USUARIOS_REGISTRADOS[usuario_correo]
     resultado = None
     try:
+        excluido = None
+        maxima = request.form.get('maxima', '').strip().lower
+        minima= request.form.get('minima', '').strip()
+        dieta = request.form.get('dieta', '').strip().lower
+        tiempo= request.form.get('tiempo', '').strip()
         ingrediente = request.form.get('ingrediente_receta', '').strip().lower()
         if not ingrediente:
             resultado = 'Por favor ingresa un ingrediente'
@@ -383,7 +384,12 @@ def buscar_receta2():
                 'query': ingrediente,
                 'number': 3,
                 'addRecipeNutrition': True,
-                'language': 'en'
+                'language': 'en',
+                # "maxReadyTime": tiempo,  
+                #"diet": dieta,
+                #"excludeIngredients": excluido,
+                #"maxCalories": maxima,
+                #"minCalories": minima,
             }
             response = requests.get(url, params=params)
             if response.status_code == 200:
@@ -391,7 +397,8 @@ def buscar_receta2():
                 recetas = data.get('results', [])
                 if recetas:
                     resultado = "<strong>Recetas encontradas:</strong><br>"
-                    for i, receta in enumerate(recetas, 1):
+                    i = 1
+                    for receta in recetas:
                         calorias_receta = {}
                         nutricion = receta.get('nutrition')
                         if nutricion:
@@ -404,6 +411,7 @@ def buscar_receta2():
                         {i}. <strong>{receta['title']}</strong><br>
                             {calorias_str}<br>
                         """
+                        i += 1
                 else:
                     resultado = 'No se encontraron recetas con ese ingrediente'     
                 return render_template('modulo3.html', datos_usuario=datos_usuario, resultado_busqueda_receta=resultado)
