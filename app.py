@@ -113,14 +113,59 @@ def logout():
     flash('Has cerrado sesión correctamente', 'info')
     return redirect(url_for('index'))
 
-@app.route('/herramientas')
-def herramientas():
+@app.route('/imc')
+def imc():
     datos_usuario = None
     if session.get('logueado'):
         usuario_correo = session.get('usuario_correo')
         if usuario_correo in USUARIOS_REGISTRADOS:
             datos_usuario = USUARIOS_REGISTRADOS[usuario_correo]
-    return render_template('herramientas.html', datos_usuario=datos_usuario)
+    return render_template('imc.html', datos_usuario=datos_usuario)
+
+@app.route('/tmb')
+def tmb():
+    datos_usuario = None
+    if session.get('logueado'):
+        usuario_correo = session.get('usuario_correo')
+        if usuario_correo in USUARIOS_REGISTRADOS:
+            datos_usuario = USUARIOS_REGISTRADOS[usuario_correo]
+    return render_template('tmb.html', datos_usuario=datos_usuario)
+
+@app.route('/cgt')
+def cgt():
+    datos_usuario = None
+    if session.get('logueado'):
+        usuario_correo = session.get('usuario_correo')
+        if usuario_correo in USUARIOS_REGISTRADOS:
+            datos_usuario = USUARIOS_REGISTRADOS[usuario_correo]
+    return render_template('cgt.html', datos_usuario=datos_usuario)
+
+@app.route('/icp')
+def icp():
+    datos_usuario = None
+    if session.get('logueado'):
+        usuario_correo = session.get('usuario_correo')
+        if usuario_correo in USUARIOS_REGISTRADOS:
+            datos_usuario = USUARIOS_REGISTRADOS[usuario_correo]
+    return render_template('icp.html', datos_usuario=datos_usuario)
+
+@app.route('/macro')
+def macro():
+    datos_usuario = None
+    if session.get('logueado'):
+        usuario_correo = session.get('usuario_correo')
+        if usuario_correo in USUARIOS_REGISTRADOS:
+            datos_usuario = USUARIOS_REGISTRADOS[usuario_correo]
+    return render_template('macro.html', datos_usuario=datos_usuario)
+
+@app.route('/analizador')
+def analizador():
+    datos_usuario = None
+    if session.get('logueado'):
+        usuario_correo = session.get('usuario_correo')
+        if usuario_correo in USUARIOS_REGISTRADOS:
+            datos_usuario = USUARIOS_REGISTRADOS[usuario_correo]
+    return render_template('analizador.html', datos_usuario=datos_usuario)
 
 @app.route('/cal_imc', methods=['POST'])
 def cal_imc():
