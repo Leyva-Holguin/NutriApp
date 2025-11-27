@@ -131,14 +131,14 @@ def tmb():
             datos_usuario = USUARIOS_REGISTRADOS[usuario_correo]
     return render_template('tmb.html', datos_usuario=datos_usuario)
 
-@app.route('/cgt')
+@app.route('/gct')
 def cgt():
     datos_usuario = None
     if session.get('logueado'):
         usuario_correo = session.get('usuario_correo')
         if usuario_correo in USUARIOS_REGISTRADOS:
             datos_usuario = USUARIOS_REGISTRADOS[usuario_correo]
-    return render_template('cgt.html', datos_usuario=datos_usuario)
+    return render_template('gct.html', datos_usuario=datos_usuario)
 
 @app.route('/icp')
 def icp():
