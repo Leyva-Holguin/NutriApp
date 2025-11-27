@@ -190,7 +190,7 @@ def cal_imc():
         resultado = f'Tu IMC es: {imc:.1f} - {clasificacion}'
     except (ValueError, ZeroDivisionError):
         resultado = 'Por favor ingresa valores numéricos válidos'
-    return render_template('herramientas.html', datos_usuario=datos_usuario, resultado_imc=resultado)
+    return render_template('imc.html', datos_usuario=datos_usuario, resultado_imc=resultado)
 
 @app.route('/cal_tmb', methods=['POST'])
 def cal_tmb():
@@ -212,7 +212,7 @@ def cal_tmb():
         resultado = f'Tu Tasa Metabólica Basal es: {tmb:.0f} calorías/día'
     except ValueError:
         resultado = 'Por favor ingresa valores numéricos válidos'
-    return render_template('herramientas.html', datos_usuario=datos_usuario, resultado_tmb=resultado)
+    return render_template('tmb.html', datos_usuario=datos_usuario, resultado_tmb=resultado)
 
 @app.route('/cal_gct', methods=['POST'])
 def cal_gct():
@@ -236,7 +236,7 @@ def cal_gct():
         resultado = f'Tu Gasto Calórico Total es: {gct:.0f} calorías/día'
     except ValueError:
         resultado = 'Por favor ingresa valores numéricos válidos'
-    return render_template('herramientas.html', datos_usuario=datos_usuario, resultado_gct=resultado)
+    return render_template('gct.html', datos_usuario=datos_usuario, resultado_gct=resultado)
 
 @app.route('/cal_peso_ideal', methods=['POST'])
 def cal_peso_ideal():
@@ -259,7 +259,7 @@ def cal_peso_ideal():
         resultado = f'Tu peso ideal aproximado: {peso_base:.1f} kg<br> Rango saludable: {peso_min:.1f} - {peso_max:.1f} kg'
     except ValueError:
         resultado = 'Por favor ingresa valores numéricos válidos'
-    return render_template('herramientas.html', datos_usuario=datos_usuario, resultado_peso_ideal=resultado)
+    return render_template('icp.html', datos_usuario=datos_usuario, resultado_peso_ideal=resultado)
 
 @app.route('/cal_macronutrientes', methods=['POST'])
 def cal_macronutrientes():
@@ -289,7 +289,7 @@ def cal_macronutrientes():
     except ValueError:
         resultado = 'Por favor ingresa valores numéricos válidos'
     
-    return render_template('herramientas.html', datos_usuario=datos_usuario, resultado_macronutrientes=resultado)
+    return render_template('macro.html', datos_usuario=datos_usuario, resultado_macronutrientes=resultado)
 
 @app.route('/analizar_receta', methods=['POST'])
 def analizar_receta():
@@ -448,7 +448,7 @@ def analizar_receta():
                 """
     except Exception as e:
         resultado = f'<div class="alert alert-danger">Error inesperado en Flask: {str(e)}</div>'
-    return render_template('herramientas.html', datos_usuario=datos_usuario, resultado_receta=resultado)
+    return render_template('analizador.html', datos_usuario=datos_usuario, resultado_receta=resultado)
 
 @app.route('/buscar_receta2', methods=['POST'])
 def buscar_receta2():
