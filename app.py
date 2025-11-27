@@ -42,9 +42,9 @@ def registrar():
         peso = request.form['peso']
         altura = request.form['altura']
         objetivo = request.form['objetivo']
-        alergia = request.form['alergias']
+        alergias = request.form['alergias']
+        intolerancias = request.form['intolerancias']
         nivel_actividad = request.form['nivel_actividad']
-        nivel_experiencia = request.form['nivel_experiencia']
         correo = request.form['correo']
         password = request.form['password']
         confirmPassword = request.form.get("confirmPassword")
@@ -71,6 +71,7 @@ def registrar():
                 'nivel_actividad': nivel_actividad,
                 'correo': correo,
                 'edad': edad,
+                'alergias': alergias,
                 }
             flash(f"Registro exitoso: {nombre}. Ahora puedes iniciar sesión.", 'success')
             return redirect(url_for('iniciar'))

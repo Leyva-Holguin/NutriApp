@@ -16,24 +16,6 @@
                     <form method="POST" action="{{ url_for('cal_imc') }}">
                         <div class="row mb-3">
                             <div class="col-8 text-start">
-                                <input type="text" class="form-control" id="edad_imc" name="edad_imc" required
-                                    placeholder="Ingresa tu edad"
-                                    value="{{ datos_usuario.edad if datos_usuario else '' }}">
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-8 text-start">
-                                <select class="form-select" id="genero_imc" name="genero_imc" required>
-                                    <option value="" selected disabled>Selecciona tu Género</option>
-                                    <option value="hombre" {{ 'selected' if datos_usuario.genero=='hombre' else '' }}>
-                                        Hombre</option>
-                                    <option value="mujer" {{ 'selected' if datos_usuario.genero=='mujer' else '' }}>
-                                        Mujer</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-8 text-start">
                                 <input type="text" class="form-control" id="peso_imc" name="peso_imc" required
                                     placeholder="Ingresa tu peso (kg)"
                                     value="{{ datos_usuario.peso if datos_usuario else '' }}">
