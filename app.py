@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session
 import requests
 
-API_KEY = "f544c737fc744d32b0f11b70a940647d"
+API_KEY = "f464ff8b2ff24730ab822bdd2da02bbd"
 API_BASE = "https://api.spoonacular.com"
 
 app = Flask(__name__) 
