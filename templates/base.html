@@ -52,16 +52,18 @@
                                             Calórico Total</a></li>
                                     <li><a class="dropdown-item" href="http://127.0.0.1:5000/icp">Calculadora de Peso
                                             Corporal Ideal</a></li>
+                                    {% if session.get('logueado') %}
                                     <li><a class="dropdown-item" href="http://127.0.0.1:5000/macro">Calculadora de
                                             Macronutrientes</a></li>
                                     <li><a class="dropdown-item" href="http://127.0.0.1:5000/analizador">Analizador de
                                             Recetas o Platos</a></li>
+                                    {% endif %}
                                 </ul>
                             </li>
+                            {% if session.get('logueado') %}
                             <li class="nav-item">
                                 <a class="nav-link text-light" href="http://127.0.0.1:5000/modulo3">Banco de recetas</a>
                             </li>
-                            {% if session.get('logueado') %}
                             <li class="nav-item">
                                 <a class="nav-link text-light" href="{{ url_for('logout') }}">Cerrar Sesión</a>
                             </li>

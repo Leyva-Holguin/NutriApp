@@ -372,9 +372,61 @@ def analizar_receta():
                             total_azucar += amount
                     analisis_ingredientes.append(info_ingrediente)
                     contador_ingredientes += 1
+                evaluacion = []
+                alertas = []
+                if total_grasas > 20:
+                    evaluacion.append("Alto en grasas")
+                    alertas.append(f"Grasas: {total_grasas:.1f}g (límite recomendado: 20g)")
+                elif total_grasas > 10:
+                    evaluacion.append("Moderado en grasas")
+                else:
+                    evaluacion.append("Bajo en grasas")
+                if total_azucar > 15:
+                    evaluacion.append("Alto en azúcar")
+                    alertas.append(f"Azúcar: {total_azucar:.1f}g (límite recomendado: 15g)")
+                elif total_azucar > 5:
+                    evaluacion.append("Moderado en azúcar")
+                else:
+                    evaluacion.append("Bajo en azúcar")
+                if total_fibra < 3:
+                    evaluacion.append("Bajo en fibra")
+                    alertas.append(f"Fibra: {total_fibra:.1f}g (mínimo recomendado: 3g)")
+                elif total_fibra > 8:
+                    evaluacion.append("Alto en fibra")
+                else:
+                    evaluacion.append("Moderado en fibra")
+                if total_proteinas > 25:
+                    evaluacion.append("Alto en proteínas")
+                elif total_proteinas < 10:
+                    evaluacion.append("Bajo en proteínas")
+                    alertas.append(f"Proteínas: {total_proteinas:.1f}g (mínimo recomendado: 10g)")
+                else:
+                    evaluacion.append("Moderado en proteínas")
+                if total_calorias > 600:
+                    evaluacion.append("Alto en calorías")
+                    alertas.append(f"Calorías: {total_calorias:.0f} (límite recomendado: 600 por porción)")
+                elif total_calorias < 200:
+                    evaluacion.append("Bajo en calorías")
+                else:
+                    evaluacion.append("Moderado en calorías")
+                if len(alertas) >= 3:
+                    etiqueta_general = "🔴 Poco saludable"
+                    color_clase = "danger"
+                elif len(alertas) >= 1:
+                    etiqueta_general = "🟡 Moderadamente saludable" 
+                    color_clase = "warning"
+                else:
+                    etiqueta_general = "🟢 Saludable"
+                    color_clase = "success"
                 resultado = f"""
                 <div class='alert alert-success'>
                     <h4>Analisis Nutricional - {titulo}</h4>
+                    <div class='alert alert-{color_clase}'>
+                        <h5>Etiqueta Nutricional: {etiqueta_general}</h5>
+                        <strong>Evaluación:</strong> {', '.join(evaluacion)}
+                        {f"<br><strong>Alertas:</strong> {', '.join(alertas)}" if alertas else ""}
+                    </div>
+                    
                     <hr>
                     <h5>Resumen Total de la Receta:</h5>
                     <div class='table-responsive'>

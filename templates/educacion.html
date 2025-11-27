@@ -91,7 +91,7 @@
         </div>
 
         <div class="col-12 col-md-5">
-            <img src="{{ url_for('static', filename='img/etq1.jpg') }}" class="img-fluid rounded-4 mb-4"
+            <img src="{{ url_for('static', filename='img/etq1.jpg') }}" class="img-fluid rounded-4 mb-2"
                 alt="Etiqueta nutricional.">
 
             <img src="{{ url_for('static', filename='img/ejem1.jpg') }}" class="img-fluid rounded-4"
@@ -102,7 +102,7 @@
 </section>
 
 <section class="container">
-    <div class="row">
+    <div class="row pt-4">
         <div class="col-12">
             <div class="card text-bg-light mb-3">
                 <div class="card-header">Mitos y verdades sobre las dietas de moda</div>
@@ -334,9 +334,10 @@
             </div>
         </div>
     </div>
-</section>
-
+</section>    
+            
 <section class="container mt-5">
+    {% if session.get('logueado') %}  
     <div class="row">
         <div class="col-12">
             <div class="card text-bg-light mb-3">
@@ -348,7 +349,6 @@
             </div>
         </div>
     </div>
-
     <div class="row">
         <div class="col-12 col-md-6 col-lg-4 mb-4">
             <div class="card text-bg-light h-100">
@@ -437,6 +437,19 @@
             </div>
         </div>
     </div>
+    {% else %}
+    <div class="row">
+        <div class="col-12">
+            <div class="card text-bg-light mb-3">
+                <div class="card-header">Recursos Descargables</div>
+                <div class="card-body">
+                    <p class="card-text">Inicia sesion para poder acceder a esta sesión.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
 </section>
+ 
 
 {% endblock %}
