@@ -390,7 +390,6 @@ def analizar_receta():
                     evaluacion.append("Bajo en azúcar")
                 if total_fibra < 3:
                     evaluacion.append("Bajo en fibra")
-                    alertas.append(f"Fibra: {total_fibra:.1f}g (mínimo recomendado: 3g)")
                 elif total_fibra > 8:
                     evaluacion.append("Alto en fibra")
                 else:
@@ -399,7 +398,6 @@ def analizar_receta():
                     evaluacion.append("Alto en proteínas")
                 elif total_proteinas < 10:
                     evaluacion.append("Bajo en proteínas")
-                    alertas.append(f"Proteínas: {total_proteinas:.1f}g (mínimo recomendado: 10g)")
                 else:
                     evaluacion.append("Moderado en proteínas")
                 if total_calorias > 600:
