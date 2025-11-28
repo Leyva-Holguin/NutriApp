@@ -42,12 +42,13 @@ def registrar():
         peso = request.form['peso']
         altura = request.form['altura']
         objetivo = request.form['objetivo']
-        alergias = request.form['alergias']
-        intolerancias = request.form['intolerancias']
+        alergias = request.form.get('alergias', 'Nulo')
+        intolerancias = request.form.get('intolerancias', 'Nulo')
         nivel_actividad = request.form['nivel_actividad']
-        alimentos_no_gusta = request.form['alimentos_no_gusta']
+        alimentos_no_gusta = request.form.get('alimentos_no_gusta', 'Nulo')
         correo = request.form['correo']
         password = request.form['password']
+        dieta = request.form.get('dietas', 'Nulo')
         confirmPassword = request.form.get("confirmPassword")
         edad = 2025 - int(year)
         if password != confirmPassword:
@@ -71,11 +72,11 @@ def registrar():
                 'nivel_actividad': nivel_actividad,
                 'correo': correo,
                 'edad': edad,
-                
-                'intolerancias': intolerancias
-                }
-            if alergias: if intolerancias if alimentos_no_gusta:
                 'alergias': alergias,
+                'intolerancias': intolerancias, 
+                'alimentos_no_gusta': alimentos_no_gusta, 
+                'dieta': dieta
+            }
             flash(f"Registro exitoso: {nombre}. Ahora puedes iniciar sesión.", 'success')
             return redirect(url_for('iniciar'))
         
