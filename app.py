@@ -45,6 +45,7 @@ def registrar():
         alergias = request.form['alergias']
         intolerancias = request.form['intolerancias']
         nivel_actividad = request.form['nivel_actividad']
+        alimentos_no_gusta = request.form['alimentos_no_gusta']
         correo = request.form['correo']
         password = request.form['password']
         confirmPassword = request.form.get("confirmPassword")
@@ -53,7 +54,6 @@ def registrar():
             error = "Las contraseñas no coinciden"
         elif correo in USUARIOS_REGISTRADOS:
             error = "Este correo ya está registrado"
-        
         if error is not None:
             flash(error, 'error')
             return render_template('registro.html')
@@ -71,8 +71,11 @@ def registrar():
                 'nivel_actividad': nivel_actividad,
                 'correo': correo,
                 'edad': edad,
-                'alergias': alergias,
+                
+                'intolerancias': intolerancias
                 }
+            if alergias: if intolerancias if alimentos_no_gusta:
+                'alergias': alergias,
             flash(f"Registro exitoso: {nombre}. Ahora puedes iniciar sesión.", 'success')
             return redirect(url_for('iniciar'))
         
