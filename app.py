@@ -7,8 +7,16 @@ API_BASE = "https://api.spoonacular.com"
 app = Flask(__name__) 
 USUARIOS_REGISTRADOS = {
     'daniel@correo.com':{
-        'password': 'daniel',
-        'nombre': 'daniel',
+        'password': "daniel",
+        'nombre': "daniel",
+        'dia': 10,
+        'mes': 10,
+        'year': 2009,
+        'genero': "hombre",
+        'peso': 60,
+        'altura': 165,
+        'correo': "daniel@correo.com",
+        'edad': 16,
     }
 }
 app.config['SECRET_KEY'] = 'la_primera_es_la_primera'
